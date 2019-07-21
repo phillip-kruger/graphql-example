@@ -20,16 +20,6 @@ mvn clean install
 
 This will start the application.
 
+Go to http://localhost:8080 to test the application
+
 To stop the application, `ctrl-c` in the maven session.
-
-## REST
-
-You can access the Swagger UI and test the REST service here:
-
-http://localhost:8080/rest/openapi-ui
-
-## GraphQL
-
-You can access the GraphiQL UI and test the GraphQL services here:
-
-http://localhost:8080/graphiql
