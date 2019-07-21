@@ -10,7 +10,7 @@ The services are exposed with both REST and GraphQL for comparison.
 mvn clean install
 ```
 
-This will start the application.
+This will start the application. (First start takes long, as it fetch and install unpublished SNAPSHOT dependencies)
 
 Go to http://localhost:8080 to test the application
 
@@ -26,3 +26,5 @@ The projects that's being downloaded:
 * The MicroProfile GraphQL API : https://github.com/eclipse/microprofile-graphql
 * The SmallRye Implementation : https://github.com/phillip-kruger/smallrye-graphql
 * GraphQL SPQR (microprofile-proto branch): https://github.com/phillip-kruger/graphql-spqr/tree/microprofile-proto
+
+Once install, a `installed` file gets create in the module. To re-install a certain module, remove that file.
