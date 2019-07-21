@@ -20,20 +20,32 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.Initialized;
 import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
+import javax.enterprise.event.ObservesAsync;
 import javax.inject.Inject;
+import lombok.extern.java.Log;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
+@Log
 @ApplicationScoped
 public class PersonDB {
     private final Map<Integer,Person> DB = new ConcurrentHashMap<>();
+    
+    @Inject @ConfigProperty(name = "test.data.size")
+    private int size;
+    
+    @Inject
+    private Event<String> asyncStartupEvent;
     
     @Inject
     private Event<Person> personCreatedEvent;
     
     public Person getPerson(int id){
+        log.log(Level.SEVERE, "======= Getting person [{0}] =======", id);
         return DB.get(id);
     }
     
@@ -41,13 +53,43 @@ public class PersonDB {
         return new ArrayList<>(DB.values());
     }
     
-    public void init(@Observes @Initialized(ApplicationScoped.class) Object init) {
+    public Person updatePerson(Person person){
+        if(person.getId() == null || person.getId() <= 0){
+            person.setId(getNextId());
+            log.log(Level.SEVERE, "======= Adding person [{0}] =======", person.getId());
+        }else{
+            log.log(Level.SEVERE, "======= Updating person [{0}] =======", person.getId());
+        }
+        DB.put(person.getId(), person);
+        return person;
+    }
+    
+    public Person deletePerson(int id){
+        if(DB.containsKey(id)){
+            log.log(Level.SEVERE, "======= Deleting person [{0}] =======", id);
+            return DB.remove(id);
+        }
+        return null;
+    }
+    
+    private synchronized int getNextId(){
+        return DB.size() + 1;
+    }
+    
+    // Generating test data
+    private void init(@Observes @Initialized(ApplicationScoped.class) Object init) {
+        asyncStartupEvent.fireAsync("Hello");
+    }
+    
+    private void createTestData(@ObservesAsync String message) {
         // Create some dummy data
-        for(int i=1;i<=Database.SIZE;i++){
+        for(int i=1;i<=size;i++){
             Person p = createRandomPerson(i); 
             personCreatedEvent.fire(p);
             DB.put(i, p);
         }
+        log.info("==== All test data generated, ready to go ! ====");
+        log.info("==== Go to http://localhost:8080 ====");
     }
     
     private Person createRandomPerson(int id){
@@ -142,7 +184,7 @@ public class PersonDB {
     }
     
     private String getRandonPersonURI(Faker faker,int i){
-        int rnd = faker.number().numberBetween(1, Database.SIZE);
+        int rnd = faker.number().numberBetween(1, size);
         if(rnd !=i)return "/rest/person/" + rnd;
         return getRandonPersonURI(faker,i);        
     }

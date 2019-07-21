@@ -30,4 +30,6 @@ http://localhost:8080/rest/openapi-ui
 
 ## GraphQL
 
-... TODO...
+You can access the GraphiQL UI and test the GraphQL services here:
+
+http://localhost:8080/graphiql

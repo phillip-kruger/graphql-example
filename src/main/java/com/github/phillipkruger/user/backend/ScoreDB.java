@@ -8,15 +8,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.Level;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
+import lombok.extern.java.Log;
 
+@Log
 @ApplicationScoped
 public class ScoreDB {
     
     private final Map<String,List<Score>> DB = new ConcurrentHashMap<>();
     
     public List<Score> getScores(String idNumber){
+        log.log(Level.SEVERE, "======= Getting scores [{0}] =======", idNumber);
         return DB.get(idNumber);
     }
     

@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Person {
     
-    private int id;
+    private Integer id;
     private String locale;
     private String title;
     private List<String> names;
