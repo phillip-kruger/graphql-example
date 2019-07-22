@@ -22,6 +22,17 @@ public class ProfileGraphQLApi {
     @Inject 
     private ScoreDB scoreDB;
     
+    @Query("profileFull")
+    public Profile getProfileFull(@Argument("personId") int personId) {
+        Person person = personDB.getPerson(personId);
+        List<Score> scores = scoreDB.getScores(person.getIdNumber());
+        Profile profile = new Profile();
+        profile.setId(person.getIdNumber());
+        profile.setPerson(person);
+        profile.setScores(scores);
+        return profile;
+    }
+    
     @Query("profile")
     public Profile getProfile(@Argument("personId") int personId) {
         Person person = personDB.getPerson(personId);
