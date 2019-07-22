@@ -1,6 +1,6 @@
 # MicroProfile GraphQL Example
 
-This is an example of the future MicroProfile GraphQL API.
+This is an example of the future MicroProfile GraphQL API. It's done as part of this presentation: http://bit.ly/mp-graphql-presentation
 
 The services are exposed with both REST and GraphQL for comparison.
 
