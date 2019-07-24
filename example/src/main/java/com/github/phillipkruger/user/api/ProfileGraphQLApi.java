@@ -8,6 +8,7 @@ import com.github.phillipkruger.user.backend.ScoreDB;
 import java.util.List;
 import javax.inject.Inject;
 import org.eclipse.microprofile.graphql.Argument;
+import org.eclipse.microprofile.graphql.DefaultValue;
 import org.eclipse.microprofile.graphql.GraphQLApi;
 import org.eclipse.microprofile.graphql.Mutation;
 import org.eclipse.microprofile.graphql.Query;
@@ -76,4 +77,14 @@ public class ProfileGraphQLApi {
     public Person deletePerson(@Argument("id") int id){
         return personDB.deletePerson(id);    
     }
+    
+    // Default values
+    @Query
+    public List<Person> personsWithSurname(@Argument("surname")
+                              @DefaultValue("Kruger")
+                              String surname) {
+    
+        return personDB.getPeopleWithSurname(surname);
+    }
+
 }

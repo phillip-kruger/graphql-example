@@ -53,6 +53,15 @@ public class PersonDB {
         return new ArrayList<>(DB.values());
     }
     
+    public List<Person> getPeopleWithSurname(String surname){
+        log.log(Level.SEVERE, "======= Finding people with surname [{0}] =======", surname);
+        List<Person> p = new ArrayList<>();
+        for(Person person: DB.values()) {
+            if(person.getSurname().equalsIgnoreCase(surname))p.add(person);
+        }
+        return p;
+    }
+    
     public Person updatePerson(Person person){
         if(person.getId() == null || person.getId() <= 0){
             person.setId(getNextId());
