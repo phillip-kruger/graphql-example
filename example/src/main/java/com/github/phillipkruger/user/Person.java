@@ -8,6 +8,8 @@ import javax.json.bind.annotation.JsonbDateFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.eclipse.microprofile.graphql.InputType;
+import org.eclipse.microprofile.graphql.Type;
 
 @Data
 @AllArgsConstructor

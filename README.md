@@ -28,3 +28,116 @@ The projects that's being downloaded:
 * GraphQL SPQR (microprofile-proto branch): https://github.com/phillip-kruger/graphql-spqr/tree/microprofile-proto
 
 Once install, a `installed` file gets create in the module. To re-install a certain module, remove that file.
+
+### Examples
+
+#### Demo 1
+
+```
+{
+  profileFull(personId:1) {
+    person{
+      surname
+    }
+  }
+}
+```
+
+#### Demo 2
+
+```
+{
+  profile(personId:1){
+    person{
+      surname
+    }
+    scores{
+      name
+      value
+    }
+  }
+}
+```
+
+in the log file:
+
+```
+======= Getting person [1] =======
+======= Getting scores [512-46-5065] =======
+```
+
+without score
+
+```
+{
+  profile(personId:1){
+    person{
+      surname
+    }
+  }
+}
+```
+
+in the log file:
+
+```
+======= Getting person [1] =======
+```
+
+#### Demo 3
+
+```
+{
+  person(personId:1){
+    surname
+    scores{
+      name
+      value
+    }
+  }
+}
+```
+
+or without score
+
+```
+{
+  person(personId:1){
+    surname
+  }
+}
+```
+
+#### Demo 4
+
+```
+{
+  people{
+     surname
+  }
+}
+```
+
+#### Demo 5
+
+```
+mutation UpdatePerson{
+  updatePerson(person : {names: "Piet"}){
+    id
+    names
+    surname
+  }
+}
+```
+
+and then update
+
+```
+mutation UpdatePerson{
+  updatePerson(person : {id: 102, surname: "Pompies", names: "Piet"}){
+    id
+    names
+    surname
+  }
+}
+```
