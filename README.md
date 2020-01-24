@@ -143,10 +143,17 @@ or without score
 #### Demo 5
 
 ```
-mutation UpdatePerson{
-  updatePerson(person : {names: "Phillip"}){
+mutation CreatePerson{
+  updatePerson(person : 
+    {
+      names: "Phillip"
+    }
+  ){
     id
     names
+    surname
+    profilePictures
+    website
   }
 }
 ```
@@ -157,14 +164,14 @@ and then update using the generated id
 mutation UpdatePerson{
   updatePerson(person : 
     {
-      id: 102, 
+      id: 101, 
+      names:"Phillip",
       surname: "Kruger", 
       profilePictures: [
-        "https://pbs.twimg.com/profile_images/1170690050524405762/I8KJ_hF4_400x400.jpg",
-        "https://avatars3.githubusercontent.com/u/6836179?s=460&v=4.jpg"
+        "https://pbs.twimg.com/profile_images/1170690050524405762/I8KJ_hF4_400x400.jpg"
       ],
       website: "http://www.phillip-kruger.com"
-    	}){
+    }){
     id
     names
     surname
@@ -174,6 +181,49 @@ mutation UpdatePerson{
 }
 ```
 
+and then delete using the id
+
+```
+mutation DeletePerson{
+  deletePerson(id :101){
+    id
+    names
+    surname
+    profilePictures
+    website
+  }
+}
+```
+
+#### Demo 6: Errors and partial responses
+
+##### Validation Errors
+
+```
+{
+  people{
+     surname
+     scores{
+      thisDoesNotExist
+    }
+  }
+}
+```
+
+##### Partial results
+
+```
+{
+  person(personId:1){
+    names
+    surname
+    scores2 {
+      name
+      value
+    }
+  }
+}
+```
 
 ### Schema
 

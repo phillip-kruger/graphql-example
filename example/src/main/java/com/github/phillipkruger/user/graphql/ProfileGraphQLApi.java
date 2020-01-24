@@ -62,28 +62,33 @@ public class ProfileGraphQLApi {
         return scoreDB.getScores(person.getIdNumber());
     }
     
-    // Other 
+    public List<Score> scores2(@Source Person person) throws ScoresNotAvailableException {
+        throw new ScoresNotAvailableException("Scores for person [" + person.getIdNumber() + "] is not available");
+    }
     
-    @Query("people")
+    // List Queries 
+    
+    @Query
     public List<Person> getPeople(){
         return personDB.getPeople();
     }
     
-    @Mutation("updatePerson")
-    public Person updatePerson(@Name("person") Person person){
+    // Mutations
+    
+    @Mutation
+    public Person updatePerson(Person person){
         return personDB.updatePerson(person);    
     }
     
-    @Mutation("deletePerson")
-    public Person deletePerson(@Name("id") int id){
+    @Mutation
+    public Person deletePerson(int id){
         return personDB.deletePerson(id);    
     }
     
     // Default values
     @Query
-    public List<Person> personsWithSurname(@Name("surname")
-                              @DefaultValue("Kruger")
-                              String surname) {
+    public List<Person> personsWithSurname(
+            @DefaultValue("Kruger") String surname) {
     
         return personDB.getPeopleWithSurname(surname);
     }
