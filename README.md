@@ -59,7 +59,7 @@ curl -X GET "http://localhost:8080/rest/profile/1" -H  "accept: application/json
     person{
       surname
     }
-    score{
+    scores{
         name
         value
     }
