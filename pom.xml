@@ -2,12 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     
-    <groupId>com.github.phillip-kruger</groupId>
+    <groupId>com.github.phillip-kruger.graphql</groupId>
     <artifactId>graphql-example-parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     
-    <name>MicroProfile GraphQL Demo</name>
+    <name>GraphQL Demo</name>
     
     <url>https://github.com/phillip-kruger/graphql-example</url>
     <description>Example application to demonstrate GraphQL</description>
@@ -45,7 +45,7 @@
     <developers>
         <developer>
             <name>Phillip Kruger</name>
-            <email>phillip.kruger@phillip-kruger.com</email>
+            <email>phillip.kruger@redhat.com</email>
             <organizationUrl>http://www.phillip-kruger.com</organizationUrl>
         </developer>
     </developers>
@@ -55,4 +55,15 @@
         <module>smallrye</module>
         <module>example</module>
     </modules>
+    
+    <profiles>
+        <profile>
+            <id>install</id>
+            <activation>
+                <property>
+                    <name>install</name>
+                </property>
+            </activation>
+        </profile>
+    </profiles>
 </project>

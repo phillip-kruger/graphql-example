@@ -1,4 +1,4 @@
-package com.github.phillipkruger.user.api;
+package com.github.phillipkruger.user.rest;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

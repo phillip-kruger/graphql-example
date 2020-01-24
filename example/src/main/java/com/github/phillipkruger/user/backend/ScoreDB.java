@@ -5,8 +5,10 @@ import com.github.phillipkruger.user.Person;
 import com.github.phillipkruger.user.Score;
 import com.github.phillipkruger.user.ScoreType;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import javax.enterprise.context.ApplicationScoped;
@@ -18,6 +20,16 @@ import lombok.extern.java.Log;
 public class ScoreDB {
     
     private final Map<String,List<Score>> DB = new ConcurrentHashMap<>();
+    
+    public Collection<List<Score>> getScoreValues(){
+        log.log(Level.SEVERE, "======= Getting all score values=======");
+        return DB.values();
+    }
+    
+    public Set<String> getScoreKeys(){
+        log.log(Level.SEVERE, "======= Getting all score keys=======");
+        return DB.keySet();
+    }
     
     public List<Score> getScores(String idNumber){
         log.log(Level.SEVERE, "======= Getting scores [{0}] =======", idNumber);

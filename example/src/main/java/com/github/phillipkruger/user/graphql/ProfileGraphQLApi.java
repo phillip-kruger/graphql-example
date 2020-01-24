@@ -1,4 +1,4 @@
-package com.github.phillipkruger.user.api;
+package com.github.phillipkruger.user.graphql;
 
 import com.github.phillipkruger.user.Person;
 import com.github.phillipkruger.user.Profile;
@@ -7,8 +7,9 @@ import com.github.phillipkruger.user.backend.PersonDB;
 import com.github.phillipkruger.user.backend.ScoreDB;
 import java.util.List;
 import javax.inject.Inject;
-import org.eclipse.microprofile.graphql.Argument;
+import org.eclipse.microprofile.graphql.Name;
 import org.eclipse.microprofile.graphql.DefaultValue;
+import org.eclipse.microprofile.graphql.Description;
 import org.eclipse.microprofile.graphql.GraphQLApi;
 import org.eclipse.microprofile.graphql.Mutation;
 import org.eclipse.microprofile.graphql.Query;
@@ -24,7 +25,8 @@ public class ProfileGraphQLApi {
     private ScoreDB scoreDB;
     
     @Query("profileFull")
-    public Profile getProfileFull(@Argument("personId") int personId) {
+    @Description("Get a person's profile using the person's Id (same a the REST service)")
+    public Profile getProfileFull(int personId) {
         Person person = personDB.getPerson(personId);
         List<Score> scores = scoreDB.getScores(person.getIdNumber());
         Profile profile = new Profile();
@@ -35,7 +37,8 @@ public class ProfileGraphQLApi {
     }
     
     @Query("profile")
-    public Profile getProfile(@Argument("personId") int personId) {
+    @Description("Get a person's profile using the person's Id")
+    public Profile getProfile(int personId) {
         Person person = personDB.getPerson(personId);
         
         Profile profile = new Profile();
@@ -45,18 +48,16 @@ public class ProfileGraphQLApi {
         return profile;
     }
     
-    @Query("scores")
     public List<Score> getScores(@Source Profile profile) {
         Person person = profile.getPerson();
         return scoreDB.getScores(person.getIdNumber());
     }
     
     @Query("person")
-    public Person getPerson(@Argument("personId") int personId){
+    public Person getPerson(@Name("personId") int personId){
         return personDB.getPerson(personId);
     }
     
-    @Query("scores")
     public List<Score> scores(@Source Person person) {
         return scoreDB.getScores(person.getIdNumber());
     }
@@ -69,18 +70,18 @@ public class ProfileGraphQLApi {
     }
     
     @Mutation("updatePerson")
-    public Person updatePerson(@Argument("person") Person person){
+    public Person updatePerson(@Name("person") Person person){
         return personDB.updatePerson(person);    
     }
     
     @Mutation("deletePerson")
-    public Person deletePerson(@Argument("id") int id){
+    public Person deletePerson(@Name("id") int id){
         return personDB.deletePerson(id);    
     }
     
     // Default values
     @Query
-    public List<Person> personsWithSurname(@Argument("surname")
+    public List<Person> personsWithSurname(@Name("surname")
                               @DefaultValue("Kruger")
                               String surname) {
     

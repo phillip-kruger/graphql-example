@@ -3,32 +3,35 @@
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
-        <groupId>com.github.phillip-kruger</groupId>
+        <groupId>com.github.phillip-kruger.graphql</groupId>
         <artifactId>graphql-example-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
     
-    <artifactId>graphql-impl</artifactId>
-    <name>MicroProfile GraphQL Demo :: Impl</name>
-    
+    <artifactId>smallrye</artifactId>
+    <name>GraphQL Demo :: SmallRye</name>
     <packaging>pom</packaging>
     
     <scm>
-        <connection>scm:git:git://github.com/phillip-kruger/smallrye-graphql</connection>
-        <developerConnection>scm:git:https://github.com/phillip-kruger/smallrye-graphql</developerConnection>
-        <url>https://github.com/phillip-kruger/smallrye-graphql</url>
+        <connection>scm:git:git://github.com/smallrye/smallrye-graphql</connection>
+        <developerConnection>scm:git:https://github.com/smallrye/smallrye-graphql</developerConnection>
+        <url>https://github.com/smallrye/smallrye-graphql</url>
         <tag>HEAD</tag>
     </scm>
 
     <profiles>
         <profile>
-            <id>install-snapshot</id>
+            <id>install</id>
             <activation>
-                <file>
-                    <missing>installed</missing>
-                </file>
+                <property>
+                    <name>install</name>
+                </property>
             </activation>
+
+            <properties>
+                <maven.test.skip>true</maven.test.skip>
+            </properties>
 
             <build>
                 <plugins>
@@ -46,28 +49,10 @@
                                 </goals>
                                 <configuration>
                                     <connectionType>developerConnection</connectionType>
-                                    <goals>clean install</goals>
+                                    <goals>install -DskipTests</goals>
                                 </configuration>
                             </execution>
                       </executions>
-                    </plugin>
-                    
-                    <plugin>
-                        <artifactId>maven-antrun-plugin</artifactId>
-                        <version>1.8</version>
-                        <executions>
-                            <execution>
-                                <phase>post-integration-test</phase>
-                                <configuration>
-                                    <tasks>
-                                          <touch file="installed"/>
-                                    </tasks>
-                                </configuration>
-                                <goals>
-                                    <goal>run</goal>
-                                </goals>
-                            </execution>
-                        </executions>
                     </plugin>
                 </plugins>
             </build>

@@ -144,9 +144,8 @@ public class PersonDB {
             person.addEmailAddress(faker.internet().emailAddress());
             person.addEmailAddress(faker.internet().emailAddress());
 
-            person.addWebsite(new URL("http://" + faker.internet().url()));
-            person.addWebsite(new URL("http://" + faker.internet().url()));
-
+            person.setWebsite(new URL("http://" + faker.internet().url()));
+            
             CreditCard card = new CreditCard();
             card.setExpiry(faker.business().creditCardExpiry());
             card.setNumber(faker.business().creditCardNumber());

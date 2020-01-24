@@ -2,14 +2,14 @@
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
-        <groupId>com.github.phillip-kruger</groupId>
+        <groupId>com.github.phillip-kruger.graphql</groupId>
         <artifactId>graphql-example-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
     
-    <artifactId>graphql-api</artifactId>
-    <name>MicroProfile GraphQL Demo :: API</name>
+    <artifactId>microprofile</artifactId>
+    <name>GraphQL Demo :: MicroProfile</name>
     
     <packaging>pom</packaging>
     
@@ -22,13 +22,12 @@
     
     <profiles>
         <profile>
-            <id>install-snapshot</id>
+            <id>install</id>
             <activation>
-                <file>
-                    <missing>installed</missing>
-                </file>
+                <property>
+                    <name>install</name>
+                </property>
             </activation>
-            
             
             <build>
                 <plugins>
@@ -46,29 +45,12 @@
                                 </goals>
                                 <configuration>
                                     <connectionType>developerConnection</connectionType>
-                                    <goals>clean install</goals>
+                                    <goals>install -DskipTests</goals>
                                 </configuration>
                             </execution>
                         </executions>
                     </plugin>
                     
-                    <plugin>
-                        <artifactId>maven-antrun-plugin</artifactId>
-                        <version>1.8</version>
-                        <executions>
-                            <execution>
-                                <phase>post-integration-test</phase>
-                                <configuration>
-                                    <tasks>
-                                          <touch file="installed"/>
-                                    </tasks>
-                                </configuration>
-                                <goals>
-                                    <goal>run</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
                 </plugins>
             </build>
         </profile>

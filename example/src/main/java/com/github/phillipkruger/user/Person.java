@@ -32,13 +32,14 @@ public class Person {
     private List<Phone> phoneNumbers;
     private List<ImClient> imClients;
     private List<SocialMedia> socialMedias;
-    private List<URL> websites;
+    private URL website;
     private List<String> taglines;
     private String biography;
     private String organization;
     private String occupation;
     private List<String> interests;
     private List<String> skills;
+    
     private List<Relation> relations;
     @JsonbDateFormat("dd/MM/yyyy")
     private LocalDate joinDate;
@@ -91,11 +92,6 @@ public class Person {
     public void addSocialMedia(SocialMedia socialMedia){
         if(socialMedias==null)socialMedias = new LinkedList<>();
         socialMedias.add(socialMedia);
-    }
-    
-    public void addWebsite(URL website){
-        if(websites==null)websites = new LinkedList<>();
-        websites.add(website);
     }
     
     public void addTagline(String tagline){

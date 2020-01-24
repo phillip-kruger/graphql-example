@@ -1,4 +1,4 @@
-package com.github.phillipkruger.user.api;
+package com.github.phillipkruger.user.rest;
 
 import com.github.phillipkruger.user.ScoreType;
 import com.github.phillipkruger.user.backend.ScoreDB;
