@@ -1,6 +1,6 @@
 # MicroProfile GraphQL Example
 
-This is an example of the future MicroProfile GraphQL API. It's done as part of this presentations: 
+This is an example of the future MicroProfile GraphQL API. It's done as part of this presentation: 
 
 - http://bit.ly/mp-graphql-presentation-2020
 
@@ -223,6 +223,58 @@ mutation DeletePerson{
     }
   }
 }
+```
+
+#### Demo 7: More complex graphs
+
+```
+{
+  person(personId:1){
+    names
+    surname
+    scores {
+      name
+      value
+      events{
+        dateTime
+        action
+      }
+    }   
+  }
+}
+```
+
+#### Demo 8: JsonB Annotations support
+
+```
+{
+  person(personId:1){
+    names
+    surname
+    scores {
+      name
+      value
+      events{
+        when
+        action
+      }
+    }   
+  }
+}
+```
+
+#### Demo 9: Introspection
+
+```
+{
+  __schema{
+    types {
+      name
+      kind
+    }
+  }
+}
+ 
 ```
 
 ### Schemas
