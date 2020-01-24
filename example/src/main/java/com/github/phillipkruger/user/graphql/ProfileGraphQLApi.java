@@ -1,11 +1,14 @@
 package com.github.phillipkruger.user.graphql;
 
+import com.github.phillipkruger.user.Event;
 import com.github.phillipkruger.user.Person;
 import com.github.phillipkruger.user.Profile;
 import com.github.phillipkruger.user.Score;
+import com.github.phillipkruger.user.backend.EventDB;
 import com.github.phillipkruger.user.backend.PersonDB;
 import com.github.phillipkruger.user.backend.ScoreDB;
 import java.util.List;
+import java.util.UUID;
 import javax.inject.Inject;
 import org.eclipse.microprofile.graphql.Name;
 import org.eclipse.microprofile.graphql.DefaultValue;
@@ -17,12 +20,6 @@ import org.eclipse.microprofile.graphql.Source;
 
 @GraphQLApi
 public class ProfileGraphQLApi {
-    
-    @Inject 
-    private PersonDB personDB;
-    
-    @Inject 
-    private ScoreDB scoreDB;
     
     @Query("profileFull")
     @Description("Get a person's profile using the person's Id (same a the REST service)")
@@ -58,11 +55,11 @@ public class ProfileGraphQLApi {
         return personDB.getPerson(personId);
     }
     
-    public List<Score> scores(@Source Person person) {
+    public List<Score> getScores(@Source Person person) {
         return scoreDB.getScores(person.getIdNumber());
     }
     
-    public List<Score> scores2(@Source Person person) throws ScoresNotAvailableException {
+    public List<Score> getScores2(@Source Person person) throws ScoresNotAvailableException {
         throw new ScoresNotAvailableException("Scores for person [" + person.getIdNumber() + "] is not available");
     }
     
@@ -85,12 +82,33 @@ public class ProfileGraphQLApi {
         return personDB.deletePerson(id);    
     }
     
+    // Complex graphs (Source of a source)
+    public List<Event> getEvents(@Source Score score) {
+        return eventDB.getEvents(score.getId());
+    }
+    
     // Default values
     @Query
-    public List<Person> personsWithSurname(
+    public List<Person> getPersonsWithSurname(
             @DefaultValue("Kruger") String surname) {
     
         return personDB.getPeopleWithSurname(surname);
     }
+    
+    
+    // TODO: Bug in SmallRye. Make sure @Source objects is included in the schema
+    @Query
+    public List<Event> getEvents(UUID scoreId){
+        return eventDB.getEvents(scoreId);
+    }
+    
+    @Inject 
+    private PersonDB personDB;
+    
+    @Inject 
+    private ScoreDB scoreDB;
+    
+    @Inject 
+    private EventDB eventDB;
 
 }
