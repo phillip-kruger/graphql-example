@@ -39,6 +39,8 @@ Go to http://localhost:8080 to test the application.
 
 To stop the application, `ctrl-c` in the maven session.
 
+![screenshot][graphql-example.png]
+
 ### Examples
 
 #### Demo 1 : MicroProfile GraphQL vs JAX-RS 
@@ -279,5 +281,5 @@ mutation DeletePerson{
 
 ### Schemas
 
-REST: http://localhost:8080/openapi
-GraphQL: localhost:8080/graphql/schema.graphql
+- REST: http://localhost:8080/openapi
+- GraphQL: http://localhost:8080/graphql/schema.graphql
