@@ -39,7 +39,7 @@ Go to http://localhost:8080 to test the application.
 
 To stop the application, `ctrl-c` in the maven session.
 
-![screenshot][graphql-example.png]
+![screenshot](graphql-example.png)
 
 ### Examples
 
