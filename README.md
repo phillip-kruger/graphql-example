@@ -41,7 +41,7 @@ To stop the application, `ctrl-c` in the maven session.
 
 ### Examples
 
-#### Demo 1
+#### Demo 1 : MicroProfile GraphQL vs JAX-RS 
 
 ##### REST
 
@@ -65,7 +65,7 @@ curl -X GET "http://localhost:8080/rest/profile/1" -H  "accept: application/json
 }
 ```
 
-#### Demo 2
+#### Demo 2: Query
 
 ```
 {
@@ -106,7 +106,7 @@ in the log file:
 ======= Getting person [1] =======
 ```
 
-#### Demo 3
+#### Demo 3: Query
 
 ```
 {
@@ -130,7 +130,7 @@ or without score
 }
 ```
 
-#### Demo 4
+#### Demo 4: Collections
 
 ```
 {
@@ -140,7 +140,7 @@ or without score
 }
 ```
 
-#### Demo 5
+#### Demo 5: Mutations
 
 ```
 mutation CreatePerson{
@@ -225,7 +225,7 @@ mutation DeletePerson{
 }
 ```
 
-### Schema
+### Schemas
 
 REST: http://localhost:8080/openapi
 GraphQL: localhost:8080/graphql/schema.graphql
