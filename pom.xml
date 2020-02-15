@@ -51,7 +51,6 @@
     </developers>
     
     <modules>
-        <module>microprofile</module>
         <module>smallrye</module>
         <module>example</module>
     </modules>
