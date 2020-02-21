@@ -26,7 +26,8 @@
         <javafaker.version>1.0.1</javafaker.version>
         
         <thorntail.version>2.6.0.Final</thorntail.version>
-        <smallrye-graphql.version>1.0.0-SNAPSHOT</smallrye-graphql.version>
+        <smallrye-graphql.version>0.9.1</smallrye-graphql.version>
+        
     </properties>
     
     <dependencyManagement>
@@ -119,16 +120,5 @@
             
         </plugins>
     </build>
-    
-    <profiles>
-        <profile>
-            <id>install</id>
-            <activation>
-                <property>
-                    <name>install</name>
-                </property>
-            </activation>
-        </profile>
-    </profiles>
     
 </project>

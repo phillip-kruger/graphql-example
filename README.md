@@ -6,21 +6,6 @@ This is an example of the future MicroProfile GraphQL API. It's done as part of 
 
 The services are exposed with both REST and GraphQL for comparison.
 
-## Install
-
-This example depend on the unreleased SNAPSHOT versions of
-
-* MicroProfile GraphQL (API) : https://github.com/eclipse/microprofile-graphql
-* SmallRye GraphQL (Implementation) : https://github.com/smallrye/smallrye-graphql
-
-If you do not have these build locally, you can just do the following:
-
-```
-mvn clean install -Pinstall
-```
-
-This will fetch the source from master for both, and compile them locally.
-
 ## Run the example
 
 ```

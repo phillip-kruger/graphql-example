@@ -51,18 +51,7 @@
     </developers>
     
     <modules>
-        <module>smallrye</module>
         <module>example</module>
     </modules>
     
-    <profiles>
-        <profile>
-            <id>install</id>
-            <activation>
-                <property>
-                    <name>install</name>
-                </property>
-            </activation>
-        </profile>
-    </profiles>
 </project>
