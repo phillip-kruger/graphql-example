@@ -8,7 +8,6 @@ import com.github.phillipkruger.user.backend.EventDB;
 import com.github.phillipkruger.user.backend.PersonDB;
 import com.github.phillipkruger.user.backend.ScoreDB;
 import java.util.List;
-import java.util.UUID;
 import javax.inject.Inject;
 import org.eclipse.microprofile.graphql.Name;
 import org.eclipse.microprofile.graphql.DefaultValue;
@@ -93,13 +92,6 @@ public class ProfileGraphQLApi {
             @DefaultValue("Kruger") String surname) {
     
         return personDB.getPeopleWithSurname(surname);
-    }
-    
-    
-    // TODO: Bug in SmallRye. Make sure @Source objects is included in the schema
-    @Query
-    public List<Event> getEvents(UUID scoreId){
-        return eventDB.getEvents(scoreId);
     }
     
     @Inject 

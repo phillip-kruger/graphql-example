@@ -1,6 +1,5 @@
 package com.github.phillipkruger.user;
 
-import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,8 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Score implements Measurable {
-    private UUID id;
-    private ScoreType name;
+public class Weight implements Measurable {
     private Long value;
 }
