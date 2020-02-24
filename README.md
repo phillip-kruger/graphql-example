@@ -6,9 +6,9 @@ This is an example of the MicroProfile GraphQL API. It's done as part of this bl
 
 and these presentations: 
 
-- dev.next (http://bit.ly/mp-graphql-devdotnext)
-- DevConf.cz (http://bit.ly/mp-graphql-presentation-2020)
-- Java cloud conf (http://bit.ly/mp-graphql-presentation)
+- [dev.next](http://bit.ly/mp-graphql-devdotnext)
+- [DevConf.cz](http://bit.ly/mp-graphql-presentation-2020)
+- [Java cloud conference](http://bit.ly/mp-graphql-presentation)
 
 The services are exposed with both REST and GraphQL for comparison.
 
