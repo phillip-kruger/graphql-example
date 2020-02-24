@@ -27,3 +27,4 @@ hs_err_pid*
 /microprofile/installed
 /smallrye/target/
 /smallrye/installed
+/person-example/target/

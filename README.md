@@ -1,15 +1,18 @@
 # MicroProfile GraphQL Example
 
-This is an example of the future MicroProfile GraphQL API. It's done as part of this presentation: 
+This is an example of the MicroProfile GraphQL API. It's done as part of these presentation: 
 
-- http://bit.ly/mp-graphql-presentation-2020
+- DevConf.cz (http://bit.ly/mp-graphql-presentation-2020)
+- ...
 
 The services are exposed with both REST and GraphQL for comparison.
 
-## Run the example
+## Person example
+
+This example expose person data as well as scores that the person got for certain activities.
 
 ```
-cd example
+cd person-example
 mvn thorntail:run
 ```
 

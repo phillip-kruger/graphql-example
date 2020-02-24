@@ -51,7 +51,7 @@
     </developers>
     
     <modules>
-        <module>example</module>
+        <module>person-example</module>
     </modules>
     
 </project>
