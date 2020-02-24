@@ -1,6 +1,10 @@
 # MicroProfile GraphQL Example
 
-This is an example of the MicroProfile GraphQL API. It's done as part of these presentations: 
+This is an example of the MicroProfile GraphQL API. It's done as part of this blog post:
+ 
+- [Microprofile GraphQL Introduction](https://www.phillip-kruger.com/post/microprofile_graphql_introduction/)
+
+and these presentations: 
 
 - dev.next (http://bit.ly/mp-graphql-devdotnext)
 - DevConf.cz (http://bit.ly/mp-graphql-presentation-2020)
