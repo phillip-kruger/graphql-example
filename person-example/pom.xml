@@ -22,11 +22,11 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         
-        <lombok.version>1.18.10</lombok.version>    
-        <javafaker.version>1.0.1</javafaker.version>
+        <lombok.version>1.18.12</lombok.version>    
+        <javafaker.version>1.0.2</javafaker.version>
         
         <thorntail.version>2.6.0.Final</thorntail.version>
-        <smallrye-graphql.version>0.9.1</smallrye-graphql.version>
+        <smallrye-graphql.version>1.0.0</smallrye-graphql.version>
         
     </properties>
     
