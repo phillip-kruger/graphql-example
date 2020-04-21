@@ -4,7 +4,7 @@
             <actionName>CUSTOM-run</actionName>
             <displayName>run</displayName>
             <goals>
-                <goal>thorntail:run</goal>
+                <goal>wildfly:run</goal>
             </goals>
         </action>
     </actions>

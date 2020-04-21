@@ -25,24 +25,22 @@
         <lombok.version>1.18.12</lombok.version>    
         <javafaker.version>1.0.2</javafaker.version>
         
-        <thorntail.version>2.6.0.Final</thorntail.version>
+        <microProfile.version>3.3</microProfile.version>
+        <openapi-ui.version>1.1.4</openapi-ui.version>
         <smallrye-graphql.version>1.0.1</smallrye-graphql.version>
         
     </properties>
     
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>io.thorntail</groupId>
-                <artifactId>bom-all</artifactId>
-                <version>${thorntail.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
+        <!-- MicroProfile -->
+        <dependency>
+            <groupId>org.eclipse.microprofile</groupId>
+            <artifactId>microprofile</artifactId>
+            <version>${microProfile.version}</version>
+            <type>pom</type>
+            <scope>provided</scope>
+        </dependency>
+        
         <!-- GraphQL -->
         <dependency>
             <groupId>io.smallrye</groupId>
@@ -50,37 +48,11 @@
             <version>${smallrye-graphql.version}</version>
         </dependency>
     
-        <!-- CDI -->
-        <dependency>
-            <groupId>io.thorntail</groupId>
-            <artifactId>cdi</artifactId>
-        </dependency>
-        <!-- REST -->
-        <dependency>
-            <groupId>io.thorntail</groupId>
-            <artifactId>jaxrs</artifactId>
-        </dependency>
-        <!-- OpenApi -->
-        <dependency>
-            <groupId>io.thorntail</groupId>
-            <artifactId>microprofile-openapi</artifactId>
-        </dependency>
-        <!-- Config -->
-        <dependency>
-            <groupId>io.thorntail</groupId>
-            <artifactId>microprofile-config</artifactId>
-        </dependency>
-        <!-- JSON-B -->
-        <dependency>
-            <groupId>io.thorntail</groupId>
-            <artifactId>jaxrs-jsonb</artifactId>
-        </dependency>
-        
         <!-- Swagger UI -->
         <dependency>
             <groupId>org.microprofile-ext.openapi-ext</groupId>
             <artifactId>openapi-ui</artifactId>
-            <version>1.1.4</version>
+            <version>${openapi-ui.version}</version>
             <scope>runtime</scope>
         </dependency>
         
@@ -102,23 +74,49 @@
     </dependencies>
     
     <build>
+        <finalName>${project.artifactId}</finalName>
+        
         <plugins>
+        
             <plugin>
-                <groupId>io.thorntail</groupId>
-                <artifactId>thorntail-maven-plugin</artifactId>
-                <version>${thorntail.version}</version>
-                
-                <executions>
-                    <execution>
-                        <id>1</id>
-                        <goals>
-                            <goal>package</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>2.0.2.Final</version>    
+                <configuration>
+                    <version>19.0.0.Final</version> 
+                    <server-config>standalone-microprofile.xml</server-config>
+                    <systemProperties>
+                        <jboss.tx.node.id>1</jboss.tx.node.id>
+                    </systemProperties>
+                    <!-- So that you can log into localhost:9990 -->
+                    <add-user>
+                        <users>
+                            <user>
+                                <username>admin</username>
+                                <password>admin</password>
+                                <groups>
+                                    <group>admin</group>
+                                </groups>
+                            </user>
+                        </users>
+                    </add-user>
+                </configuration>
+            </plugin>    
         </plugins>
+                
     </build>
+    
+    <profiles>
+        <profile>
+            <id>jdk11plus</id>
+            <activation>
+                <jdk>[11,)</jdk>
+            </activation>
+            <properties>
+                <jboss.extra.opts>--add-modules java.se</jboss.extra.opts>
+            </properties>
+        </profile>
+    </profiles>
+    
     
 </project>

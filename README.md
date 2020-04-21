@@ -6,6 +6,7 @@ This is an example of the MicroProfile GraphQL API. It's done as part of this bl
 
 and these presentations: 
 
+- [SouJava](http://bit.ly/mp-graphql-presentation-soujava)
 - [dev.next](http://bit.ly/mp-graphql-devdotnext)
 - [DevConf.cz](http://bit.ly/mp-graphql-presentation-2020)
 - [Java cloud conference](http://bit.ly/mp-graphql-presentation)
@@ -18,10 +19,10 @@ This example expose person data as well as scores that the person got for certai
 
 ```
 cd person-example
-mvn thorntail:run
+mvn wildfly:run
 ```
 
-This will start the application on port 8080.
+This will start the application on port 8080. (Wildfly)
 
 ## Testing
 
