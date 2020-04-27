@@ -532,7 +532,12 @@
       root.classList.add('playgroundIn');
 
       GraphQLPlayground.init(root, {
-        // you can add more options here
+        "endpoint": "/graphql",
+        "workspaceName": "GraphQL Playground",
+        "settings":{
+            "editor.theme": "light",
+            "schema.polling.enable": false
+        }
       })
     })
   </script>
