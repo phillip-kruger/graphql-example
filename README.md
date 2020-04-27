@@ -1,6 +1,6 @@
 # MicroProfile GraphQL Example
 
-This is an example of the MicroProfile GraphQL API. It's done as part of this blog post:
+This is an example of the [MicroProfile GraphQL API](https://github.com/eclipse/microprofile-graphql/) using the [SmallRye Implementation](https://github.com/smallrye/smallrye-graphql). It's done as part of this blog post:
  
 - [Microprofile GraphQL Introduction](https://www.phillip-kruger.com/post/microprofile_graphql_introduction/)
 
