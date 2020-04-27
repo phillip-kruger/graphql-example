@@ -127,6 +127,23 @@ or without score
 }
 ```
 
+or more people
+
+```
+{
+  person1:person(personId:1){
+    surname
+    scores{
+      name
+      value
+    }
+  }
+  person2:person(personId:2){
+    surname
+  }
+}
+```
+
 #### Demo 4: Collections
 
 ```
