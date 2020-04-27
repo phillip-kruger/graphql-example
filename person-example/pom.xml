@@ -77,7 +77,22 @@
         <finalName>${project.artifactId}</finalName>
         
         <plugins>
-        
+            
+            <!-- To generate the schema -->
+            <plugin>
+                <artifactId>smallrye-graphql-maven-plugin</artifactId>
+                <groupId>io.smallrye</groupId>
+                <version>${smallrye-graphql.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate-schema</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            <!-- To run against Wildfly -->
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
