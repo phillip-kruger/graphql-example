@@ -6,6 +6,7 @@ This is an example of the MicroProfile GraphQL API. It's done as part of this bl
 
 and these presentations: 
 
+- [joziJUG](https://bit.ly/mp-graphql-presentation-jozijug)
 - [SouJava](http://bit.ly/mp-graphql-presentation-soujava)
 - [dev.next](http://bit.ly/mp-graphql-devdotnext)
 - [DevConf.cz](http://bit.ly/mp-graphql-presentation-2020)
