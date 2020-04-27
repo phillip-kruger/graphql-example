@@ -27,7 +27,7 @@
         
         <microProfile.version>3.3</microProfile.version>
         <openapi-ui.version>1.1.4</openapi-ui.version>
-        <smallrye-graphql.version>1.0.1</smallrye-graphql.version>
+        <smallrye-graphql.version>1.0.2-SNAPSHOT</smallrye-graphql.version>
         
     </properties>
     
