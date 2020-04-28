@@ -79,7 +79,7 @@
         <plugins>
             
             <!-- To generate the schema -->
-<!--            <plugin>
+            <plugin>
                 <artifactId>smallrye-graphql-maven-plugin</artifactId>
                 <groupId>io.smallrye</groupId>
                 <version>${smallrye-graphql.version}</version>
@@ -90,7 +90,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
             
             <!-- To run against Wildfly -->
             <plugin>
