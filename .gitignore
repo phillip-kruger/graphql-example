@@ -28,3 +28,6 @@ hs_err_pid*
 /smallrye/target/
 /smallrye/installed
 /person-example/target/
+/shared-backend/target/
+/wildfly-example/target/
+/quarkus-example/target/

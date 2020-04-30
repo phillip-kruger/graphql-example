@@ -1,15 +1,16 @@
 # MicroProfile GraphQL Example
 
-This is an example of the [MicroProfile GraphQL API](https://github.com/eclipse/microprofile-graphql/) using the [SmallRye Implementation](https://github.com/smallrye/smallrye-graphql). It's done as part of this blog post:
+This is an example of the [MicroProfile GraphQL API](https://github.com/eclipse/microprofile-graphql/) 
+using the [SmallRye Implementation](https://github.com/smallrye/smallrye-graphql). It's done as part of these blog posts:
  
 - [Microprofile GraphQL Introduction](https://www.phillip-kruger.com/post/microprofile_graphql_introduction/)
 
 and these presentations: 
 
-- [joziJUG](https://bit.ly/mp-graphql-presentation-jozijug)
-- [SouJava](http://bit.ly/mp-graphql-presentation-soujava)
+- [joziJUG](https://bit.ly/mp-graphql-presentation-jozijug), ([video](https://youtu.be/UqDdDYo-g-8))
+- [SouJava](http://bit.ly/mp-graphql-presentation-soujava), ([video](https://youtu.be/OOnpUeblVPM))
 - [dev.next](http://bit.ly/mp-graphql-devdotnext)
-- [DevConf.cz](http://bit.ly/mp-graphql-presentation-2020)
+- [DevConf.cz](http://bit.ly/mp-graphql-presentation-2020) ([video](https://www.youtube.com/watch?v=lA0L7iB-GV8))
 - [Java cloud conference](http://bit.ly/mp-graphql-presentation)
 
 The services are exposed with both REST and GraphQL for comparison.
@@ -18,12 +19,18 @@ The services are exposed with both REST and GraphQL for comparison.
 
 This example expose person data as well as scores that the person got for certain activities.
 
+### Running in Wildfly
+
 ```
-cd person-example
+cd wildfly-example
 mvn wildfly:run
 ```
 
-This will start the application on port 8080. (Wildfly)
+### Running in Quarkus
+
+TODO - this is in progress
+
+This will start the application on port 8080.
 
 ## Testing
 
