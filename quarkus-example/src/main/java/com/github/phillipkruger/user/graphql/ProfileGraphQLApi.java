@@ -69,6 +69,12 @@ public class ProfileGraphQLApi {
         return personDB.getPeople();
     }
     
+//    @Query
+//    public List<Score> getPersonScores(int personId){
+//        Person person = personDB.getPerson(personId);
+//        return scoreDB.getScores(person.getIdNumber());
+//    }
+    
     // Mutations
     
     @Mutation

@@ -56,7 +56,6 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-smallrye-graphql</artifactId>
-            <version>999-SNAPSHOT</version> <!-- TODO: Add to bom ? -->
         </dependency>
         <!-- Shared backend -->
         <dependency>

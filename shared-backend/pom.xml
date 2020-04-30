@@ -30,12 +30,6 @@
             <scope>provided</scope>
             <version>1.18.12</version>
         </dependency>
-        <!-- Java Faker -->
-        <dependency>
-            <groupId>com.github.javafaker</groupId>
-            <artifactId>javafaker</artifactId>
-            <version>1.0.2</version>
-        </dependency>
         
     </dependencies>
     

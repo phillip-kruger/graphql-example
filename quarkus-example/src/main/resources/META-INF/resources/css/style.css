@@ -1,0 +1,194 @@
+html, body {
+  height: 100%;
+  height: 100vh; }
+
+body {
+  min-height: 100%;
+  padding: 0px;
+  margin: 0px; }
+
+body {
+  background-color: #fff;
+  background-image: url("../images/background.jpg");
+  background-size: cover;
+  background-position: left bottom;
+  background-attachment: fixed;
+  font-family: "Segoe UI", "Lucida Grande", "Lucida Sans", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+  color: #333; }
+
+a {
+  text-decoration: none;
+  color: #00ade0; }
+  a:hover {
+    color: #00c1fa; }
+
+#mainContainer {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.7);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: stretch;
+      align-content: stretch;
+  min-height: 100%;
+  max-width: 80%;
+  margin: 0px;
+  -webkit-animation: fadeIn 0.5s ease-out both;
+          animation: fadeIn 0.5s ease-out both; }
+  #mainContainer #mainContentBlock {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 auto;
+            flex: 1 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    -ms-flex-line-pack: left;
+        align-content: left;
+    padding: 0px; }
+    #mainContainer #mainContentBlock #mainContent {
+      margin: 0px;
+      overflow: hidden;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -ms-flex-line-pack: center;
+          align-content: center;
+      padding-top: 100px; }
+      #mainContainer #mainContentBlock #mainContent #avatarImageBlock {
+        width: 150px;
+        height: 150px;
+        margin: 10px 50px;
+        border-radius: 50%;
+        background-position: center center;
+        background-size: cover;
+        opacity: 0.95;
+        -webkit-animation: intro 0.5s ease-out both;
+                animation: intro 0.5s ease-out both; }
+      #mainContainer #mainContentBlock #mainContent #introBox {
+        text-align: left;
+        margin: 0px;
+        padding: 0px 50px; }
+        #mainContainer #mainContentBlock #mainContent #introBox h1 {
+          font-size: 3em;
+          font-weight: normal;
+          margin: 0px;
+          -webkit-animation: intro 0.5s 0.2s ease-out both;
+                  animation: intro 0.5s 0.2s ease-out both; }
+        #mainContainer #mainContentBlock #mainContent #introBox h2 {
+          font-size: 1.8em;
+          font-weight: lighter;
+          margin: 0px;
+          -webkit-animation: intro 0.5s 0.4s ease-out both;
+                  animation: intro 0.5s 0.4s ease-out both; }
+        #mainContainer #mainContentBlock #mainContent #introBox #linkBox {
+          padding: 0px;
+          list-style: none;
+          max-width: 80%;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-orient: horizontal;
+          -webkit-box-direction: normal;
+              -ms-flex-direction: row;
+                  flex-direction: row;
+          -webkit-box-pack: start;
+              -ms-flex-pack: start;
+                  justify-content: flex-start;
+          -ms-flex-wrap: wrap;
+              flex-wrap: wrap;
+          -webkit-animation: intro 0.5s 0.6s ease-out both;
+                  animation: intro 0.5s 0.6s ease-out both; }
+          #mainContainer #mainContentBlock #mainContent #introBox #linkBox li {
+            margin-right: 10px;
+            display: inline; }
+            #mainContainer #mainContentBlock #mainContent #introBox #linkBox li .link-icon:hover {
+              color: #00c1fa; }
+            #mainContainer #mainContentBlock #mainContent #introBox #linkBox li a .description {
+              display: none;
+              font-size: 0.8em; }
+            #mainContainer #mainContentBlock #mainContent #introBox #linkBox li.featured a .description {
+              color: #333;
+              padding-left: 5px;
+              padding-right: 2px; }
+              #mainContainer #mainContentBlock #mainContent #introBox #linkBox li.featured a .description:hover {
+                color: #00c1fa; }
+            #mainContainer #mainContentBlock #mainContent #introBox #linkBox li.featured .description {
+              display: inline; }
+      #mainContainer #mainContentBlock #mainContent #fullBioBox {
+        font-size: 0.9em;
+        color: #4d4d4d;
+        padding: 10px 50px;
+        -webkit-animation: intro 0.5s 0.8s ease-out both;
+                animation: intro 0.5s 0.8s ease-out both; }
+
+div.footer {
+  text-align: left;
+  font-size: 0.7em;
+  padding-left: 50px;
+  opacity: 0.8; }
+
+@media only screen and (max-width: 768px) {
+  #mainContainer {
+    max-width: 90%; }
+    #mainContainer #mainContentBlock #mainContent #avatarImageBlock {
+      margin-left: 25px; }
+    #mainContainer #mainContentBlock #mainContent #introBox {
+      padding: 0px 25px; }
+    #mainContainer #mainContentBlock #mainContent #fullBioBox {
+      padding: 0px 25px; }
+  div.footer {
+    padding-left: 25px; } }
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@-webkit-keyframes intro {
+  0% {
+    -webkit-transform: translateY(40px);
+            transform: translateY(40px);
+    opacity: 0; }
+  50% {
+    opacity: 0.2; }
+  100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+    opacity: 1; } }
+
+@keyframes intro {
+  0% {
+    -webkit-transform: translateY(40px);
+            transform: translateY(40px);
+    opacity: 0; }
+  50% {
+    opacity: 0.2; }
+  100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+    opacity: 1; } }

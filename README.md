@@ -28,7 +28,10 @@ mvn wildfly:run
 
 ### Running in Quarkus
 
-TODO - this is in progress
+```
+cd quarkus-example
+mvn quarkus:dev
+```
 
 This will start the application on port 8080.
 

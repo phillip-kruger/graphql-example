@@ -1,0 +1,14 @@
+{
+    "name": "MicroProfile GraphQL Example",
+    "briefIntro": "Example Application that shows the new MicroProfile GraphQL API",
+    "fullBio": "You can compare REST and GraphQL:\n\n* [REST](http://localhost:8080/rest/openapi-ui/)\n* [GraphQL](http://localhost:8080/graphiql/)\n\n",
+    "links": [
+        {
+            "linkType": "twitter",
+            "linkLabel": "Twitter",
+            "url": "https://twitter.com/phillipkruger",
+            "isImportant": false
+        }
+    ],
+    "avatarUrl": "images/avatar.jpg"
+}
