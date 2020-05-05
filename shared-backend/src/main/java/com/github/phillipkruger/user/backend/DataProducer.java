@@ -10,21 +10,21 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
 import javax.json.bind.JsonbConfig;
-import lombok.extern.java.Log;
 
 /**
  * Producing the dummy data in memory
  * @author Phillip Kruger (phillip.kruger@redhat.com)
  */
-@Log
 @ApplicationScoped
 public class DataProducer {
-
+    private final Logger log = Logger.getLogger(DataProducer.class.getName());
+            
     @Produces
     public Map<String,Person> producePeople(){
         log.info("Loading dummy person data...");

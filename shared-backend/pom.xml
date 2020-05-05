@@ -23,13 +23,6 @@
             <scope>provided</scope>
             <version>3.3</version>
         </dependency>
-        <!-- Lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
-            <version>1.18.12</version>
-        </dependency>
         
     </dependencies>
     

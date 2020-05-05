@@ -7,4 +7,15 @@
                 <goal>quarkus:dev</goal>
             </goals>
         </action>
+        <action>
+            <actionName>CUSTOM-native</actionName>
+            <displayName>native</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>install</goal>
+            </goals>
+            <activatedProfiles>
+                <activatedProfile>native</activatedProfile>
+            </activatedProfiles>
+        </action>
     </actions>

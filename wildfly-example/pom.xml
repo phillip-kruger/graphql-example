@@ -15,7 +15,7 @@
     <name>GraphQL Demo :: Wildfly Example</name>
     
     <properties>
-        <smallrye-graphql.version>1.0.2-SNAPSHOT</smallrye-graphql.version>
+        <smallrye-graphql.version>1.0.2</smallrye-graphql.version>
     </properties>
     
     <dependencies>
@@ -41,14 +41,7 @@
             <version>1.1.4</version>
             <scope>runtime</scope>
         </dependency>
-        
-        <!-- Lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        
+      
         <!-- Shared backend -->
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -84,7 +77,7 @@
                 <artifactId>wildfly-maven-plugin</artifactId>
                 <version>2.0.2.Final</version>    
                 <configuration>
-                    <version>19.0.0.Final</version> 
+                    <version>19.1.0.Final</version> 
                     <server-config>standalone-microprofile.xml</server-config>
                     <systemProperties>
                         <jboss.tx.node.id>1</jboss.tx.node.id>

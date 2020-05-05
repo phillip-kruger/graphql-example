@@ -1,13 +1,22 @@
 package com.github.phillipkruger.user.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Relation {
     private RelationType relationType;
     private String personURI;
+
+    public RelationType getRelationType() {
+        return relationType;
+    }
+
+    public void setRelationType(RelationType relationType) {
+        this.relationType = relationType;
+    }
+
+    public String getPersonURI() {
+        return personURI;
+    }
+
+    public void setPersonURI(String personURI) {
+        this.personURI = personURI;
+    }
 }

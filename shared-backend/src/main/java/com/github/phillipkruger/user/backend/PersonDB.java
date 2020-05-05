@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import lombok.extern.java.Log;
 
-@Log
 @ApplicationScoped
 public class PersonDB {
+    private final Logger log = Logger.getLogger(PersonDB.class.getName());
     
     @Inject
     Map<String,Person> personDatabase;
