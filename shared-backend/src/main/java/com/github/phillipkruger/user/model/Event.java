@@ -6,11 +6,20 @@ import javax.json.bind.annotation.JsonbDateFormat;
 
 public class Event {
     
+    private String scoreId;
     private Action action;
     private BigDecimal value;
     private LocalDateTime dateTime;
     @JsonbDateFormat("dd MMM yyyy 'at' HH:MM")
     private LocalDateTime when;
+    
+    public String getScoreId() {
+        return scoreId;
+    }
+
+    public void setScoreId(String scoreId) {
+        this.scoreId = scoreId;
+    }
 
     public Action getAction() {
         return action;

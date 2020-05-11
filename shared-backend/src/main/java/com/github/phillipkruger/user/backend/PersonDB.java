@@ -7,18 +7,16 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 
 @ApplicationScoped
 public class PersonDB {
     private final Logger log = Logger.getLogger(PersonDB.class.getName());
     
-    @Inject
-    Map<String,Person> personDatabase;
+    private Map<Integer,Person> personDatabase = Database.getPeopleSchema();
     
     public Person getPerson(Integer id){
         log.log(Level.SEVERE, "======= Getting person [{0}] =======", id);    
-        return personDatabase.get(String.valueOf(id));
+        return personDatabase.get(id);
     }
     
     public List<Person> getPeople(){
@@ -41,7 +39,7 @@ public class PersonDB {
         }else{
             log.log(Level.SEVERE, "======= Updating person [{0}] =======", person.getId());
         }
-        personDatabase.put(String.valueOf(person.getId()), person);
+        personDatabase.put(person.getId(), person);
         return person;
     }
     

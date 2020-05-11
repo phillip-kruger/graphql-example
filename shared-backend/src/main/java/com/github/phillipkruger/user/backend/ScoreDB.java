@@ -7,14 +7,12 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 
 @ApplicationScoped
 public class ScoreDB {
     private final Logger log = Logger.getLogger(ScoreDB.class.getName());
     
-    @Inject
-    Map<String,List<Score>> scoreDatabase;
+    private Map<String,List<Score>> scoreDatabase = Database.getScoresSchema();
     
     public List<Score> getScores(String idNumber){
         log.log(Level.SEVERE, "======= Getting scores [{0}] =======", idNumber);

@@ -1,4 +1,4 @@
-# quarkus-example project
+# Quarkus MicroProfile GraphQL Example
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
@@ -6,10 +6,15 @@ If you want to learn more about Quarkus, please visit its website: https://quark
 
 ## Running the application in dev mode
 
+![basic](basic.gif)
+
 You can run your application in dev mode that enables live coding using:
 ```
 ./mvnw quarkus:dev
 ```
+
+![hotreload](hotreload.gif)
+(There is an issue with live-reload, after hot reload, intermittent errors on request)
 
 ## Packaging and running the application
 
@@ -22,6 +27,8 @@ The application is now runnable using `java -jar target/quarkus-example-1.0.0-SN
 ## Creating a native executable
 
 You can create a native executable using: `./mvnw package -Pnative`.
+
+![native](native.gif)
 
 Or, if you don't have GraalVM installed, you can run the native executable build in a container using: `./mvnw package -Pnative -Dquarkus.native.container-build=true`.
 

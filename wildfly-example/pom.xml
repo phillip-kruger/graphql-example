@@ -15,7 +15,7 @@
     <name>GraphQL Demo :: Wildfly Example</name>
     
     <properties>
-        <smallrye-graphql.version>1.0.2</smallrye-graphql.version>
+        <smallrye-graphql.version>1.0.3</smallrye-graphql.version>
     </properties>
     
     <dependencies>
@@ -34,6 +34,14 @@
             <version>${smallrye-graphql.version}</version>
         </dependency>
     
+        <!-- GraphQL UI -->
+        <dependency>
+            <groupId>io.smallrye</groupId>
+            <artifactId>smallrye-graphql-ui-graphiql</artifactId>
+            <version>${smallrye-graphql.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        
         <!-- Swagger UI -->
         <dependency>
             <groupId>org.microprofile-ext.openapi-ext</groupId>

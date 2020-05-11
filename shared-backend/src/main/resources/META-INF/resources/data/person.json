@@ -1,6 +1,5 @@
-
-{
-    "1": {
+[
+    {
         "addresses": [
             {
                 "code": "60896",
@@ -114,7 +113,7 @@
         "username": "jill.donnelly",
         "website": "http://www.korey-gleichner.org"
     },
-    "2": {
+    {
         "addresses": [
             {
                 "code": "28284-1415",
@@ -228,7 +227,7 @@
         "username": "sebastian.friesen",
         "website": "http://www.virgil-hauck.biz"
     },
-    "3": {
+    {
         "addresses": [
             {
                 "code": "01927",
@@ -342,7 +341,7 @@
         "username": "shela.ankunding",
         "website": "http://www.myrtice-spencer.biz"
     },
-    "4": {
+    {
         "addresses": [
             {
                 "code": "79025",
@@ -456,7 +455,7 @@
         "username": "hilario.padberg",
         "website": "http://www.nadia-huels.info"
     },
-    "5": {
+    {
         "addresses": [
             {
                 "code": "57398-7396",
@@ -570,7 +569,7 @@
         "username": "marvin.beatty",
         "website": "http://www.dee-mayert.org"
     },
-    "6": {
+    {
         "addresses": [
             {
                 "code": "30432-5427",
@@ -684,7 +683,7 @@
         "username": "delbert.schultz",
         "website": "http://www.lindsey-kub.co"
     },
-    "7": {
+    {
         "addresses": [
             {
                 "code": "03230",
@@ -798,7 +797,7 @@
         "username": "irvin.gulgowski",
         "website": "http://www.cassandra-lang.net"
     },
-    "8": {
+    {
         "addresses": [
             {
                 "code": "57661",
@@ -912,7 +911,7 @@
         "username": "marketta.jakubowski",
         "website": "http://www.oscar-casper.net"
     },
-    "9": {
+    {
         "addresses": [
             {
                 "code": "99566",
@@ -1026,7 +1025,7 @@
         "username": "ermelinda.blanda",
         "website": "http://www.lilian-hauck.net"
     },
-    "10": {
+    {
         "addresses": [
             {
                 "code": "39513-6916",
@@ -1140,4 +1139,4 @@
         "username": "armando.wisoky",
         "website": "http://www.santos-schumm.com"
     }
-}
+]

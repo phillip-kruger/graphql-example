@@ -5,14 +5,12 @@ import com.github.phillipkruger.user.model.Person;
 import com.github.phillipkruger.user.model.Score;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Produces;
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
 import javax.json.bind.JsonbConfig;
@@ -21,17 +19,21 @@ import javax.json.bind.JsonbConfig;
  * Producing the dummy data in memory
  * @author Phillip Kruger (phillip.kruger@redhat.com)
  */
-@ApplicationScoped
-public class DataProducer {
-    private final Logger log = Logger.getLogger(DataProducer.class.getName());
-            
-    @Produces
-    public Map<String,Person> producePeople(){
+public class Database {
+    private static final Logger log = Logger.getLogger(Database.class.getName());
+    
+    private Database(){}
+    
+    public static Map<Integer,Person> getPeopleSchema(){
         log.info("Loading dummy person data...");
-        Map<String,Person> personDatabase = new ConcurrentHashMap<>();
-        try(InputStream jsonStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("data/person.json")){
+        Map<Integer,Person> personDatabase = new HashMap<>();
+        try(InputStream jsonStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("META-INF/resources/data/person.json")){
             if(jsonStream!=null){
-                personDatabase = JSONB.fromJson(jsonStream, new ConcurrentHashMap<String,Person>(){}.getClass().getGenericSuperclass());
+                
+                List<Person> loaded = JSONB.fromJson(jsonStream, new ArrayList<Person>(){}.getClass().getGenericSuperclass());
+                for(Person p:loaded){
+                    personDatabase.put(p.getId(), p);
+                }
             }else{
                 log.log(Level.WARNING, "Can not load dummy data [person.json]");
             }
@@ -44,13 +46,16 @@ public class DataProducer {
         return personDatabase;
     }
  
-    @Produces
-    public Map<String,List<Score>> produceScores(){
+    public static Map<String,List<Score>> getScoresSchema(){
         log.info("Loading dummy score data...");
-        Map<String,List<Score>> scoreDatabase = new ConcurrentHashMap<>();
-        try(InputStream jsonStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("data/score.json")){
+        Map<String,List<Score>> scoreDatabase = new HashMap<>();
+        try(InputStream jsonStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("META-INF/resources/data/score.json")){
             if(jsonStream!=null){
-                scoreDatabase = JSONB.fromJson(jsonStream, new ConcurrentHashMap<String,List<Score>>(){}.getClass().getGenericSuperclass());
+                List<List<Score>> loaded = JSONB.fromJson(jsonStream, new ArrayList<List<Score>>(){}.getClass().getGenericSuperclass());
+                for(List<Score> s:loaded){
+                    String personNumber = s.get(0).getPersonNumber();
+                    scoreDatabase.put(personNumber, s);
+                }
             }else{
                 log.log(Level.WARNING, "Can not load dummy data [score.json]");
             }
@@ -61,13 +66,16 @@ public class DataProducer {
         return scoreDatabase;
     }
     
-    @Produces
-    public Map<UUID,List<Event>> produceEvents(){
+    public static Map<String,List<Event>> getEventsSchema(){
         log.info("Loading dummy event data...");
-        Map<UUID,List<Event>> eventDatabase = new ConcurrentHashMap<>();
-        try(InputStream jsonStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("data/event.json")){
+        Map<String,List<Event>> eventDatabase = new HashMap<>();
+        try(InputStream jsonStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("META-INF/resources/data/event.json")){
             if(jsonStream!=null){
-                eventDatabase = JSONB.fromJson(jsonStream, new ConcurrentHashMap<UUID,List<Event>>(){}.getClass().getGenericSuperclass());
+                List<List<Event>> loaded = JSONB.fromJson(jsonStream, new ArrayList<List<Event>>(){}.getClass().getGenericSuperclass());
+                for(List<Event> s:loaded){
+                    String scoreId = s.get(0).getScoreId();
+                    eventDatabase.put(scoreId, s);
+                }
             }else{
                 log.log(Level.WARNING, "Can not load dummy data [event.json]");
             }
@@ -75,7 +83,7 @@ public class DataProducer {
             log.log(Level.WARNING, "Can not load dummy data [event.json] - {1}", new Object[]{ex.getMessage()});
         }
         
-        log.fine("... loaded [" + eventDatabase.size() + "] events");
+        log.warning("... loaded [" + eventDatabase.size() + "] events");
         return eventDatabase;
     }
     

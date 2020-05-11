@@ -3,15 +3,24 @@ package com.github.phillipkruger.user.model;
 import java.util.UUID;
 
 public class Score implements Measurable {
-    private UUID id;
+    private String personNumber;
+    private String id;
     private ScoreType name;
     private Long value;
 
-    public UUID getId() {
+    public String getPersonNumber() {
+        return personNumber;
+    }
+
+    public void setPersonNumber(String personNumber) {
+        this.personNumber = personNumber;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 

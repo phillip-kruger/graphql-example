@@ -69,11 +69,11 @@ public class ProfileGraphQLApi {
         return personDB.getPeople();
     }
     
-//    @Query
-//    public List<Score> getPersonScores(int personId){
-//        Person person = personDB.getPerson(personId);
-//        return scoreDB.getScores(person.getIdNumber());
-//    }
+    @Query
+    public List<Score> getPersonScores(int personId){
+        Person person = personDB.getPerson(personId);
+        return scoreDB.getScores(person.getIdNumber());
+    }
     
     // Mutations
     
@@ -91,6 +91,14 @@ public class ProfileGraphQLApi {
     public List<Event> getEvents(@Source Score score) {
         return eventDB.getEvents(score.getId());
     }
+    
+//    public List<Double> getRandomNumbers(@Source Score score){
+//        List<Double> randomNumbers = new ArrayList<>();
+//        randomNumbers.add(Math.random());
+//        randomNumbers.add(Math.random());
+//        randomNumbers.add(Math.random());
+//        return randomNumbers;
+//    }
     
     // Default values
     @Query
