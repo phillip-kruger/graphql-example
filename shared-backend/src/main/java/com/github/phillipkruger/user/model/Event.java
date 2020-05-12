@@ -3,9 +3,10 @@ package com.github.phillipkruger.user.model;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import javax.json.bind.annotation.JsonbDateFormat;
+import org.eclipse.microprofile.graphql.Ignore;
 
 public class Event {
-    
+    @Ignore
     private String scoreId;
     private Action action;
     private BigDecimal value;

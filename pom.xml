@@ -56,6 +56,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        
+        <smallrye-graphql.version>1.0.3</smallrye-graphql.version>
     </properties>
     
     <dependencyManagement>
@@ -83,6 +85,7 @@
         <module>shared-backend</module>
         <module>wildfly-example</module>
         <module>quarkus-example</module>
+        <module>quarkus-client</module>
     </modules>
     
 </project>

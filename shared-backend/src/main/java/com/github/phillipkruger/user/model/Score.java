@@ -1,8 +1,9 @@
 package com.github.phillipkruger.user.model;
 
-import java.util.UUID;
+import org.eclipse.microprofile.graphql.Ignore;
 
 public class Score implements Measurable {
+    @Ignore
     private String personNumber;
     private String id;
     private ScoreType name;

@@ -31,3 +31,4 @@ hs_err_pid*
 /shared-backend/target/
 /wildfly-example/target/
 /quarkus-example/target/
+/quarkus-client/target/

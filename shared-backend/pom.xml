@@ -22,7 +22,13 @@
             <type>pom</type>
             <scope>provided</scope>
         </dependency>
-        
+        <!-- GraphQL -->
+        <dependency>
+            <groupId>io.smallrye</groupId>
+            <artifactId>smallrye-graphql-servlet</artifactId>
+            <version>${smallrye-graphql.version}</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
     
 </project>

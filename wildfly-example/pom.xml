@@ -14,10 +14,6 @@
     
     <name>GraphQL Demo :: Wildfly Example</name>
     
-    <properties>
-        <smallrye-graphql.version>1.0.3</smallrye-graphql.version>
-    </properties>
-    
     <dependencies>
         <!-- MicroProfile -->
         <dependency>
