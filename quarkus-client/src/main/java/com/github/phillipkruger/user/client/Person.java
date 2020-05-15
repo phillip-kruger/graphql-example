@@ -7,7 +7,8 @@ public class Person {
     private String title;
     private List<String> names;
     private String surname;
-
+    private List<Score> scores;
+    
     public Integer getId() {
         return id;
     }
@@ -40,10 +41,11 @@ public class Person {
         this.surname = surname;
     }
 
-    @Override
-    public String toString() {
-        return "Person{" + "id=" + id + ", title=" + title + ", names=" + names + ", surname=" + surname + '}';
+    public List<Score> getScores() {
+        return scores;
     }
-    
-    
+
+    public void setScore(List<Score> scores) {
+        this.scores = scores;
+    }    
 }

@@ -13,20 +13,28 @@ import io.smallrye.graphql.client.typesafe.api.GraphQlClientBuilder;
 public class PersonMain implements QuarkusApplication {
 
     //@Inject
-    //PersonStub personStub;
+    //PersonGraphQLClient personClient;
+    PersonGraphQLClient personClient = GraphQlClientBuilder.newBuilder().build(PersonGraphQLClient.class);
     
     @Override
     public int run(String... args) throws Exception {
+        int id = 1;
+        if(args.length!=0){
+            id = Integer.valueOf(args[0]);
+        }
         
-        PersonStub personStub = GraphQlClientBuilder.newBuilder()
-            .build(PersonStub.class);
+        Person person = personClient.person(id);
         
-        Person person1 = personStub.person(1);
         
-        System.out.println(person1);
-        
+        System.out.println("=========================");
+        System.out.println("|  " + person.getNames().get(0) + " " + person.getSurname() +"\t|");
+        System.out.println("|\t\t\t|");
+        for(Score score:person.getScores()){
+            System.out.println("|\t " + score.getName() + "\t|");
+            System.out.println("|\t " + score.getValue() + "\t\t|");
+            System.out.println("|\t\t\t|");
+        }
+        System.out.println("=========================");
         return 0;
     }
-
-
 }
