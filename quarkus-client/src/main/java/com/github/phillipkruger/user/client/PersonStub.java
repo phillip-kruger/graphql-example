@@ -1,15 +1,12 @@
 package com.github.phillipkruger.user.client;
 
-import javax.enterprise.context.ApplicationScoped;
+import io.smallrye.graphql.client.typesafe.api.GraphQlClientApi;
 
 /**
  * Facade on the person service
  * @author Phillip Kruger (phillip.kruger@redhat.com)
  */
-@ApplicationScoped
-public class PersonStub {
-
-    public String ping(){
-        return "pong";
-    }
+@GraphQlClientApi
+public interface PersonStub {
+    public Person person(int personId);
 }
