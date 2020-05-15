@@ -2,13 +2,13 @@
 
 This project uses Quarkus Command mode and the SmallRye client.
 
-== Build
+## Build
 
 ```
 mvn clean install
 ```
 
-== Run
+## Run
 
 Make sure you have the server running, then:
 
