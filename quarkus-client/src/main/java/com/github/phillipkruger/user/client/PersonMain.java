@@ -18,14 +18,21 @@ public class PersonMain implements QuarkusApplication {
     
     @Override
     public int run(String... args) throws Exception {
+        int id = getRequestedPersonId(args);
+        Person person = personClient.person(id);
+        printPerson(person);
+        return 0;
+    }
+    
+    private int getRequestedPersonId(String... args){
         int id = 1;
         if(args.length!=0){
             id = Integer.valueOf(args[0]);
         }
-        
-        Person person = personClient.person(id);
-        
-        
+        return id;
+    }
+    
+    private void printPerson(Person person){
         System.out.println("=========================");
         System.out.println("|  " + person.getNames().get(0) + " " + person.getSurname() +"\t|");
         System.out.println("|\t\t\t|");
@@ -35,6 +42,5 @@ public class PersonMain implements QuarkusApplication {
             System.out.println("|\t\t\t|");
         }
         System.out.println("=========================");
-        return 0;
     }
 }
