@@ -7,6 +7,8 @@ import com.github.phillipkruger.user.model.Score;
 import com.github.phillipkruger.user.backend.EventDB;
 import com.github.phillipkruger.user.backend.PersonDB;
 import com.github.phillipkruger.user.backend.ScoreDB;
+import com.github.phillipkruger.user.model.Gender;
+import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import org.eclipse.microprofile.graphql.Name;
@@ -42,6 +44,22 @@ public class ProfileGraphQLApi {
         profile.setPerson(person);
         
         return profile;
+    }
+    
+    @Query
+    public List<Person> getAll(Gender gender){
+        List<Person> people = getPeople();
+        List<Person> filter = new ArrayList<>();
+        
+        for(Person p:people){
+            if(p.getGender().equals(gender)){
+                filter.add(p);
+            }
+        }
+        
+        return filter;
+        
+        
     }
     
     public List<Score> getScores(@Source Profile profile) {
