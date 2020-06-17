@@ -2,16 +2,15 @@
 
 This is an example of the [MicroProfile GraphQL API](https://github.com/eclipse/microprofile-graphql/) 
 using the [SmallRye Implementation](https://github.com/smallrye/smallrye-graphql). It's done as part of these blog posts:
- 
+
+- [Supersonic Subatomic GraphQL](https://www.phillip-kruger.com/post/supersonic_subatomic_graphql/) 
 - [Microprofile GraphQL Introduction](https://www.phillip-kruger.com/post/microprofile_graphql_introduction/)
-- [Supersonic Subatomic GraphQL](https://www.phillip-kruger.com/post/supersonic_subatomic_graphql/)
 
 and these presentations and videos: 
 
 - [#OffTheChain](https://www.youtube.com/watch?v=OOTkQBCtYg0)
 - [joziJUG](https://bit.ly/mp-graphql-presentation-jozijug), ([video](https://youtu.be/UqDdDYo-g-8))
 - [SouJava](http://bit.ly/mp-graphql-presentation-soujava), ([video](https://youtu.be/OOnpUeblVPM))
-- [dev.next](http://bit.ly/mp-graphql-devdotnext)
 - [DevConf.cz](http://bit.ly/mp-graphql-presentation-2020) ([video](https://www.youtube.com/watch?v=lA0L7iB-GV8))
 - [Java cloud conference](http://bit.ly/mp-graphql-presentation)
 
