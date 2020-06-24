@@ -20,6 +20,19 @@ import org.eclipse.microprofile.graphql.Source;
 @GraphQLApi
 public class ProfileGraphQLApi {
     
+    @Query("person")
+    public Person getPerson(@Name("personId") int personId){
+        return personDB.getPerson(personId);
+    }
+    
+    public List<Score> getScores(@Source Person person) {
+        return scoreDB.getScores(person.getIdNumber());
+    }
+    
+    public List<Score> getScores2(@Source Person person) throws ScoresNotAvailableException {
+        throw new ScoresNotAvailableException("Scores for person [" + person.getIdNumber() + "] is not available");
+    }
+    
     @Query("profileFull")
     @Description("Get a person's profile using the person's Id (same a the REST service)")
     public Profile getProfileFull(int personId) {
@@ -47,19 +60,6 @@ public class ProfileGraphQLApi {
     public List<Score> getScores(@Source Profile profile) {
         Person person = profile.getPerson();
         return scoreDB.getScores(person.getIdNumber());
-    }
-    
-    @Query("person")
-    public Person getPerson(@Name("personId") int personId){
-        return personDB.getPerson(personId);
-    }
-    
-    public List<Score> getScores(@Source Person person) {
-        return scoreDB.getScores(person.getIdNumber());
-    }
-    
-    public List<Score> getScores2(@Source Person person) throws ScoresNotAvailableException {
-        throw new ScoresNotAvailableException("Scores for person [" + person.getIdNumber() + "] is not available");
     }
     
     // List Queries 
