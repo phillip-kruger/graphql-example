@@ -3,7 +3,7 @@
 This is an example of the [MicroProfile GraphQL API](https://github.com/eclipse/microprofile-graphql/) 
 using the [SmallRye Implementation](https://github.com/smallrye/smallrye-graphql). It's done as part of these blog posts:
 
-- [Supersonic Subatomic GraphQL](https://www.phillip-kruger.com/post/supersonic_subatomic_graphql/) 
+- [Supersonic Subatomic GraphQL](https://quarkus.io/blog/supersonic-subatomic-graphql/) 
 - [Microprofile GraphQL Introduction](https://www.phillip-kruger.com/post/microprofile_graphql_introduction/)
 
 and these presentations and videos: 
@@ -33,6 +33,8 @@ mvn wildfly:run
 cd quarkus-example
 mvn quarkus:dev
 ```
+
+NOTE: Due to [this bug](https://github.com/quarkusio/quarkus/issues/9693) the hot reload gives intermitted errors. This is already [fix](https://github.com/quarkusio/quarkus/issues/9693) and should be in the release soon.
 
 This will start the application on port 8080.
 
