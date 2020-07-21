@@ -22,6 +22,9 @@ import org.eclipse.microprofile.graphql.Source;
 @GraphQLApi
 public class ProfileGraphQLApi {
     
+    @Inject
+    CountryStore countryStore;
+    
     @Query("profileFull")
     @Description("Get a person's profile using the person's Id (same a the REST service)")
     public Profile getProfileFull(int personId) {
@@ -65,6 +68,10 @@ public class ProfileGraphQLApi {
     public List<Score> getScores(@Source Profile profile) {
         Person person = profile.getPerson();
         return scoreDB.getScores(person.getIdNumber());
+    }
+    
+    public String getCountry(@Source Person person){
+        return countryStore.getCountry(person.getLocale());
     }
     
     @Query("person")
