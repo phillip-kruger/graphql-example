@@ -27,7 +27,7 @@ public class CountryStore {
         if(locale.equals("en-ZA")){
             return "South Africa";
         }else if(locale.equals("en-AU")){
-            return "Austalia";
+            return "Australia";
         }else if(locale.equals("en-UK")){
             return "United Kingdom";
         }else{
