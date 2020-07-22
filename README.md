@@ -20,6 +20,13 @@ The services are exposed with both REST and GraphQL for comparison.
 
 This example expose person data as well as scores that the person got for certain activities.
 
+Before you can run any of the examples, you need to build the multi-module project in the root:
+
+```
+mvn clean install
+```
+This is so that the shared module, that is used by all examples, is build.
+
 ### Running in Wildfly
 
 ```
