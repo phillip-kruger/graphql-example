@@ -6,14 +6,14 @@ using the [SmallRye Implementation](https://github.com/smallrye/smallrye-graphql
 - [Supersonic Subatomic GraphQL](https://quarkus.io/blog/supersonic-subatomic-graphql/) 
 - [Microprofile GraphQL Introduction](https://www.phillip-kruger.com/post/microprofile_graphql_introduction/)
 
-and these presentations and videos: 
+and these [presentation](https://docs.google.com/presentation/d/1FCBw-qcjawBNNOSvqD7eJMUV96TwOL-4QyMkQAFt6tg/edit?usp=sharing)s: 
 
-- [Global Summit for Java devs'20](https://docs.google.com/presentation/d/1FCBw-qcjawBNNOSvqD7eJMUV96TwOL-4QyMkQAFt6tg/edit?usp=sharing)
+- Upcoming: Global Summit for Java devs'20
 - [Quarkus Insights](https://www.youtube.com/watch?v=nMti8-zIDQs)
 - [#OffTheChain](https://www.youtube.com/watch?v=OOTkQBCtYg0)
-- [joziJUG](https://bit.ly/mp-graphql-presentation-jozijug), ([video](https://youtu.be/UqDdDYo-g-8))
-- [SouJava](http://bit.ly/mp-graphql-presentation-soujava), ([video](https://youtu.be/OOnpUeblVPM))
-- [DevConf.cz](http://bit.ly/mp-graphql-presentation-2020) ([video](https://www.youtube.com/watch?v=lA0L7iB-GV8))
+- [joziJUG](https://youtu.be/UqDdDYo-g-8)
+- [SouJava](https://youtu.be/OOnpUeblVPM)
+- [DevConf.cz](https://www.youtube.com/watch?v=lA0L7iB-GV8)
 - [Java cloud conference](http://bit.ly/mp-graphql-presentation)
 
 The services are exposed with both REST and GraphQL for comparison.
