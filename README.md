@@ -23,6 +23,7 @@ The services are exposed with both REST and GraphQL for comparison.
 This example expose person data as well as scores that the person got for certain activities.
 
 ### Running in Quarkus
+(generate from https://code.quarkus.io/)
 
 ```
 cd quarkus-example
