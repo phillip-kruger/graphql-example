@@ -4,6 +4,8 @@
             <actionName>CUSTOM-run</actionName>
             <displayName>run</displayName>
             <goals>
+                <goal>clean</goal>
+                <goal>install</goal>
                 <goal>wildfly:run</goal>
             </goals>
         </action>

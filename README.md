@@ -8,6 +8,8 @@ using the [SmallRye Implementation](https://github.com/smallrye/smallrye-graphql
 
 and these presentations and videos: 
 
+- Upcoming : [Global Summit for Java devs'20](https://java.geekle.us/)
+- [Quarkus Insights](https://www.youtube.com/watch?v=nMti8-zIDQs)
 - [#OffTheChain](https://www.youtube.com/watch?v=OOTkQBCtYg0)
 - [joziJUG](https://bit.ly/mp-graphql-presentation-jozijug), ([video](https://youtu.be/UqDdDYo-g-8))
 - [SouJava](http://bit.ly/mp-graphql-presentation-soujava), ([video](https://youtu.be/OOnpUeblVPM))
@@ -20,28 +22,19 @@ The services are exposed with both REST and GraphQL for comparison.
 
 This example expose person data as well as scores that the person got for certain activities.
 
-Before you can run any of the examples, you need to build the multi-module project in the root:
+### Running in Quarkus
 
 ```
-mvn clean install
+cd quarkus-example
+mvn clean install quarkus:dev
 ```
-This is so that the shared module, that is used by all examples, is build.
 
 ### Running in Wildfly
 
 ```
 cd wildfly-example
-mvn wildfly:run
+mvn clean install wildfly:run
 ```
-
-### Running in Quarkus
-
-```
-cd quarkus-example
-mvn quarkus:dev
-```
-
-NOTE: Due to [this bug](https://github.com/quarkusio/quarkus/issues/9693) the hot reload gives intermitted errors. This is already [fix](https://github.com/quarkusio/quarkus/issues/9693) and should be in the release soon.
 
 This will start the application on port 8080.
 
@@ -62,34 +55,32 @@ To stop the application, `ctrl-c` in the maven session.
 
 ##### REST
 
+Schema: http://localhost:8080/openapi
+
 ```
 curl -X GET "http://localhost:8080/rest/profile/1" -H  "accept: application/json"
 ```
 
 ##### GraphQL
 
+Schema: http://localhost:8080/graphql/schema.graphql
+
 ```
 {
-  profileFull(personId:1) {
-    person{
-      surname
-    }
-    scores{
-        name
-        value
-    }
+  person(id:1){
+    names
+    surname
   }
 }
 ```
 
-#### Demo 2: Query
+#### Demo 2: Stitching
 
 ```
 {
-  profile(personId:1){
-    person{
-      surname
-    }
+  person(id:1){
+    names
+    surname
     scores{
       name
       value
@@ -109,10 +100,9 @@ without score
 
 ```
 {
-  profile(personId:1){
-    person{
-      surname
-    }
+  person(id:1){
+    names
+    surname
   }
 }
 ```
@@ -123,59 +113,164 @@ in the log file:
 ======= Getting person [1] =======
 ```
 
-#### Demo 3: Query
+#### Demo 3: More than one request
 
 ```
 {
-  person(personId:1){
+  person1:person(id:1){
     surname
     scores{
       name
       value
     }
   }
-}
-```
-
-or without score
-
-```
-{
-  person(personId:1){
+  person2:person(id:2){
     surname
   }
 }
 ```
 
-or more people
+or more than one query:
+
+```
+@Query
+public Integer getRandomNumber(long seed){
+    Random random = new Random(seed);
+    return random.nextInt();
+}
+```
 
 ```
 {
-  person1:person(personId:1){
+  person1:person(id:1){
     surname
     scores{
       name
       value
     }
   }
-  person2:person(personId:2){
-    surname
-  }
+  randomId:randomNumber(seed:11)
 }
 ```
+
 
 #### Demo 4: Collections
 
 ```
 {
-  people{
-     surname
+  people {
+    surname
   }
 }
 ```
 
-#### Demo 5: Mutations
+#### Demo 5: JsonB Annotations support
 
+```
+{
+  person(id:1){
+     surname
+     birthDate
+  }
+}
+```
+
+#### Demo 6: Errors and partial responses
+
+##### Validation Errors
+
+```
+{
+  person(id:1){
+     surname
+     scores{
+      thisDoesNotExist
+    }
+  }
+}
+```
+
+##### Partial results
+
+```
+{
+  person(id:1){
+     surname
+     scores{
+      name
+      value
+    }
+  }
+}
+```
+
+#### Demo 7: Metrics and Tracing
+
+##### Servers
+
+This will be specific to your setup. For me:
+
+**Start Prometheus:**
+```
+cd /opt/Metrics/prometheus-2.19.2.linux-amd64
+./prometheus --config.file=prometheus.yml
+```
+(prometheus.yml is in the root folder)
+
+**Start Grafana:**
+```
+sudo systemctl start grafana-server
+```
+(grafana.json is in the root folder)
+
+**Start Jaeger:**
+```
+docker run -p 5775:5775/udp -p 6831:6831/udp -p 6832:6832/udp -p 5778:5778 -p 16686:16686 -p 14268:14268 jaegertracing/all-in-one:latest
+``` 
+
+##### Metrics
+
+```
+@Timed(name = "personTimer", description = "How long does it take to get a Person.", unit = MetricUnits.NANOSECONDS)
+@Counted(name = "personCount", description = "How many times did we ask for Person.")
+```
+
+[Grafana Dashboard](http://localhost:3000/d/T2kbtqZGk/person-metrics?orgId=1&refresh=5s)
+
+![metrics](metrics.png)
+
+##### Tracing
+
+[Jaeger Dashboard](http://localhost:16686/search)
+
+![tracing1](tracing1.png)
+![tracing2](tracing2.png)
+
+#### Demo 7: Security
+
+```
+@RolesAllowed("admin")
+```
+
+#### Demo 8: Bean validation
+
+```
+@Query
+public Integer getRandomNumber(@Min(10) long seed){
+    Random random = new Random(seed);
+    return random.nextInt();
+}
+```
+
+```
+{
+  randomNumber(seed:9)
+}
+```
+
+#### Demo 9: Mutations
+
+##### Create
 ```
 mutation CreatePerson{
   updatePerson(person : 
@@ -192,13 +287,15 @@ mutation CreatePerson{
 }
 ```
 
-and then update using the generated id
+##### Update 
+
+(using the generated id)
 
 ```
 mutation UpdatePerson{
   updatePerson(person : 
     {
-      id: 101, 
+      id: 11, 
       names:"Phillip",
       surname: "Kruger", 
       profilePictures: [
@@ -215,89 +312,22 @@ mutation UpdatePerson{
 }
 ```
 
-and then delete using the id
+##### Delete
+
+(using the id)
 
 ```
 mutation DeletePerson{
-  deletePerson(id :101){
+  deletePerson(id :11){
     id
-    names
     surname
-    profilePictures
-    website
   }
 }
 ```
 
-#### Demo 6: Errors and partial responses
 
-##### Validation Errors
 
-```
-{
-  people{
-     surname
-     scores{
-      thisDoesNotExist
-    }
-  }
-}
-```
-
-##### Partial results
-
-```
-{
-  person(personId:1){
-    names
-    surname
-    scores2 {
-      name
-      value
-    }
-  }
-}
-```
-
-#### Demo 7: More complex graphs
-
-```
-{
-  person(personId:1){
-    names
-    surname
-    scores {
-      name
-      value
-      events{
-        dateTime
-        action
-      }
-    }   
-  }
-}
-```
-
-#### Demo 8: JsonB Annotations support
-
-```
-{
-  person(personId:1){
-    names
-    surname
-    scores {
-      name
-      value
-      events{
-        when
-        action
-      }
-    }   
-  }
-}
-```
-
-#### Demo 9: Introspection
+#### Apendix: Introspection
 
 ```
 {

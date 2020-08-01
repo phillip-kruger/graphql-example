@@ -20,6 +20,4 @@ public class ScoresNotAvailableException extends Exception {
     public ScoresNotAvailableException(String string, Throwable thrwbl, boolean bln, boolean bln1) {
         super(string, thrwbl, bln, bln1);
     }
-
-
 }

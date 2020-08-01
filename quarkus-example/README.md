@@ -14,7 +14,6 @@ You can run your application in dev mode that enables live coding using:
 ```
 
 ![hotreload](hotreload.gif)
-(There is an issue with live-reload, after hot reload, intermittent errors on request)
 
 ## Packaging and running the application
 
