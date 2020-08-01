@@ -11,4 +11,5 @@ public class Weight implements Measurable {
     public void setValue(Long value) {
         this.value = value;
     }
+    
 }

@@ -52,6 +52,8 @@ To stop the application, `ctrl-c` in the maven session.
 
 ### Examples
 
+See the model in the JavaDoc (target/apidocs/index.html)
+
 #### Demo 1 : MicroProfile GraphQL vs JAX-RS 
 
 ##### REST
@@ -359,9 +361,19 @@ mutation DeletePerson{
 #### Demo 12: Context (Experimental)
 
 ```
-@Inject
-Context context
+quarkus.hibernate-orm.log.sql=true
 ```
+
+```
+@Inject
+Context context;
+
+JsonArray selectedFields = context.getSelectedFields();
+System.out.println("selectedFields [" + selectedFields +"]");
+
+```
+
+
 
 ```
 {
@@ -372,6 +384,8 @@ Context context
 ```
 
 #### Demo 13: Client (Future)
+
+See the model in the JavaDoc (target/apidocs/index.html)
 
 ```
 //@Inject

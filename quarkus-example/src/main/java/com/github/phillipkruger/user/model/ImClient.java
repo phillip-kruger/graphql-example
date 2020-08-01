@@ -8,8 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class ImClient implements Serializable {
-    private static final long serialVersionUID = 1234569L;
+public class ImClient {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

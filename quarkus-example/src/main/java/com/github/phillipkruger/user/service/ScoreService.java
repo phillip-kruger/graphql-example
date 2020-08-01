@@ -21,6 +21,7 @@ public class ScoreService {
     private final Map<String,List<Score>> scoreDatabase = new HashMap<>();
     
     public List<Score> getScores(String idNumber){
+        System.err.println("======= Getting scores [" + idNumber + "] =======");
         return scoreDatabase.get(idNumber);
     }
     

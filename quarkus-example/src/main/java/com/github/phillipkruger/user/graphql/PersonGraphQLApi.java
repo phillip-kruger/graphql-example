@@ -6,6 +6,7 @@ import com.github.phillipkruger.user.service.PersonService;
 import com.github.phillipkruger.user.service.ScoreService;
 import java.util.List;
 import java.util.Random;
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.validation.constraints.Min;
 import org.eclipse.microprofile.graphql.DefaultValue;
@@ -38,8 +39,10 @@ public class PersonGraphQLApi {
         return personService.getPeople();
     }
     
-    public List<Score> getScores(@Source Person p){
+    //@RolesAllowed("admin")
+    public List<Score> getScores(@Source Person p) throws ScoresNotAvailableException{
         return scoreService.getScores(p.getIdNumber());
+        //throw new ScoresNotAvailableException("Scores for person [" + p.getId() + "] not avaialble");
     }
     
     @Query

@@ -1,6 +1,5 @@
 package com.github.phillipkruger.user.model;
 
-import java.io.Serializable;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.LinkedList;
@@ -16,8 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Person implements Serializable {
-    private static final long serialVersionUID = 2234567L;
+public class Person{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
