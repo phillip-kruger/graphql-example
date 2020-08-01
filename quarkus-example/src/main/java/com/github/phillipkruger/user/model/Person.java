@@ -27,7 +27,7 @@ public class Person implements Serializable {
     
     private String title;
     
-    @ElementCollection(targetClass=String.class)
+    @ElementCollection(fetch = FetchType.EAGER, targetClass=String.class)
     private List<String> names;
     
     @ElementCollection(targetClass=String.class)

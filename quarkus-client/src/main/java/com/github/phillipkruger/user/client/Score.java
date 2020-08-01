@@ -24,4 +24,9 @@ public class Score {
     public void setValue(Long value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "Score{" + "name=" + name + ", value=" + value + '}';
+    }
 }

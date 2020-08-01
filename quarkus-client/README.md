@@ -21,20 +21,5 @@ Where `1` is the person id.
 This will result in the person being fetched from the server:
 
 ```
-=========================
-|  Christine O'Reilly   |
-|                       |
-|        Driving        |
-|        15             |
-|                       |
-|        Fitness        |
-|        94             |
-|                       |
-|        Activity       |
-|        63             |
-|                       |
-|        Financial      |
-|        22             |
-|                       |
-=========================
+
 ```

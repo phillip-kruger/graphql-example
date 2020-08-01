@@ -8,7 +8,7 @@ using the [SmallRye Implementation](https://github.com/smallrye/smallrye-graphql
 
 and these presentations and videos: 
 
-- Upcoming : [Global Summit for Java devs'20](https://java.geekle.us/)
+- [Global Summit for Java devs'20](https://docs.google.com/presentation/d/1FCBw-qcjawBNNOSvqD7eJMUV96TwOL-4QyMkQAFt6tg/edit?usp=sharing)
 - [Quarkus Insights](https://www.youtube.com/watch?v=nMti8-zIDQs)
 - [#OffTheChain](https://www.youtube.com/watch?v=OOTkQBCtYg0)
 - [joziJUG](https://bit.ly/mp-graphql-presentation-jozijug), ([video](https://youtu.be/UqDdDYo-g-8))
@@ -370,6 +370,19 @@ Context context
 }
 ```
 
+#### Demo 13: Client (Future)
+
+```
+//@Inject
+PersonGraphQLClient graphQLClient = GraphQlClientBuilder.newBuilder().build(PersonGraphQLClient.class);
+```
+
+```
+Person graphQLPerson = graphQLClient.getPerson(id);
+        
+System.err.println("================ GRAPHQL ================");
+System.err.println(graphQLPerson);
+```
 #### Apendix: Introspection
 
 ```

@@ -47,5 +47,10 @@ public class Person {
 
     public void setScore(List<Score> scores) {
         this.scores = scores;
-    }    
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" + "id=" + id + ", title=" + title + ", names=" + names + ", surname=" + surname + ", scores=" + scores + '}';
+    }
 }

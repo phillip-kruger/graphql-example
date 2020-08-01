@@ -3,7 +3,8 @@ package com.github.phillipkruger.user.client;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
 import io.smallrye.graphql.client.typesafe.api.GraphQlClientBuilder;
-//import javax.inject.Inject;
+import javax.inject.Inject;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 /**
  * Main app to do person operations
@@ -13,14 +14,24 @@ import io.smallrye.graphql.client.typesafe.api.GraphQlClientBuilder;
 public class PersonMain implements QuarkusApplication {
 
     //@Inject
-    //PersonGraphQLClient personClient;
-    PersonGraphQLClient personClient = GraphQlClientBuilder.newBuilder().build(PersonGraphQLClient.class);
+    PersonGraphQLClient graphQLClient = GraphQlClientBuilder.newBuilder().build(PersonGraphQLClient.class);
+    
+    @Inject @RestClient
+    PersonRestClient restClient;
     
     @Override
     public int run(String... args) throws Exception {
         int id = getRequestedPersonId(args);
-        Person person = personClient.person(id);
-        printPerson(person);
+        Person restPerson = restClient.getPerson(id);
+        
+        System.err.println("================ REST ================");
+        System.err.println(restPerson);
+      
+        Person graphQlPerson = graphQLClient.getPerson(id);
+        
+        System.err.println("================ GRAPHQL ================");
+        System.err.println(graphQlPerson);
+        
         return 0;
     }
     
@@ -30,17 +41,5 @@ public class PersonMain implements QuarkusApplication {
             id = Integer.valueOf(args[0]);
         }
         return id;
-    }
-    
-    private void printPerson(Person person){
-        System.out.println("=========================");
-        System.out.println("|  " + person.getNames().get(0) + " " + person.getSurname() +"\t|");
-        System.out.println("|\t\t\t|");
-        for(Score score:person.getScores()){
-            System.out.println("|\t " + score.getName() + "\t|");
-            System.out.println("|\t " + score.getValue() + "\t\t|");
-            System.out.println("|\t\t\t|");
-        }
-        System.out.println("=========================");
     }
 }
