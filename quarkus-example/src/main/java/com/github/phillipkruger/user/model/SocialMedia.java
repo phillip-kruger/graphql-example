@@ -9,6 +9,7 @@ import javax.persistence.Id;
 
 @Entity
 public class SocialMedia implements Serializable {
+    private static final long serialVersionUID = 5234567L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

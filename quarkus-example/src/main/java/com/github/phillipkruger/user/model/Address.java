@@ -13,6 +13,7 @@ import javax.persistence.OrderColumn;
 
 @Entity
 public class Address implements Serializable {
+    private static final long serialVersionUID = 1234567L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

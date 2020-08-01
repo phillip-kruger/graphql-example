@@ -9,6 +9,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Phone implements Serializable {
+    private static final long serialVersionUID = 3234567L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

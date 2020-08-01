@@ -9,6 +9,7 @@ import javax.persistence.Id;
 
 @Entity
 public class CreditCard implements Serializable {
+    private static final long serialVersionUID = 1234568L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

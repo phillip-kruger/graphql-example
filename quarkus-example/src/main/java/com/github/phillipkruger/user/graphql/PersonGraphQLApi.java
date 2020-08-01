@@ -6,7 +6,6 @@ import com.github.phillipkruger.user.service.PersonService;
 import com.github.phillipkruger.user.service.ScoreService;
 import java.util.List;
 import java.util.Random;
-import java.util.UUID;
 import javax.inject.Inject;
 import javax.validation.constraints.Min;
 import org.eclipse.microprofile.graphql.DefaultValue;
@@ -39,14 +38,14 @@ public class PersonGraphQLApi {
         return personService.getPeople();
     }
     
+    public List<Score> getScores(@Source Person p){
+        return scoreService.getScores(p.getIdNumber());
+    }
+    
     @Query
     public Integer getRandomNumber(@Min(10) long seed){
         Random random = new Random(seed);
         return random.nextInt();
-    }
-    
-    public List<Score> getScores(@Source Person p){
-        return scoreService.getScores(p.getIdNumber());
     }
     
     // Mutations
@@ -64,7 +63,7 @@ public class PersonGraphQLApi {
     // Default values
     @Query
     public List<Person> getPersonsWithSurname(
-            @DefaultValue("Kruger") String surname) {
+            @DefaultValue("Doyle") String surname) {
         return personService.getPeopleWithSurname(surname);
     }
     

@@ -17,6 +17,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Person implements Serializable {
+    private static final long serialVersionUID = 2234567L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

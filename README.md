@@ -175,7 +175,37 @@ public Integer getRandomNumber(long seed){
 }
 ```
 
-#### Demo 6: Errors and partial responses
+#### Demo 6: DefaultValue
+
+```
+@Query
+public List<Person> getPersonsWithSurname(
+        @DefaultValue("Doyle") String surname) {
+    return personService.getPeopleWithSurname(surname);
+}
+```
+
+Providing a parameter
+
+```
+{
+  personsWithSurname(surname:"Hyatt") {
+    names
+  }
+}
+```
+
+Uing the default
+
+```
+{
+  personsWithSurname {
+    names
+  }
+}
+```
+
+#### Demo 7: Errors and partial responses
 
 ##### Validation Errors
 
@@ -204,7 +234,7 @@ public Integer getRandomNumber(long seed){
 }
 ```
 
-#### Demo 7: Metrics and Tracing
+#### Demo 8: Metrics and Tracing
 
 ##### Servers
 
@@ -246,13 +276,13 @@ docker run -p 5775:5775/udp -p 6831:6831/udp -p 6832:6832/udp -p 5778:5778 -p 16
 ![tracing1](tracing1.png)
 ![tracing2](tracing2.png)
 
-#### Demo 7: Security
+#### Demo 9: Security
 
 ```
 @RolesAllowed("admin")
 ```
 
-#### Demo 8: Bean validation
+#### Demo 10: Bean validation
 
 ```
 @Query
@@ -268,7 +298,7 @@ public Integer getRandomNumber(@Min(10) long seed){
 }
 ```
 
-#### Demo 9: Mutations
+#### Demo 11: Mutations
 
 ##### Create
 ```
@@ -325,7 +355,20 @@ mutation DeletePerson{
 }
 ```
 
+#### Demo 12: Context (Experimental)
 
+```
+@Inject
+Context context
+```
+
+```
+{
+  people{
+    surname
+  }
+}
+```
 
 #### Apendix: Introspection
 

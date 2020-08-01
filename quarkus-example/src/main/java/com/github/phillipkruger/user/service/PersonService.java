@@ -1,8 +1,11 @@
 package com.github.phillipkruger.user.service;
 
 import com.github.phillipkruger.user.model.Person;
+import io.smallrye.graphql.api.Context;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.json.JsonArray;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -11,7 +14,7 @@ import javax.transaction.Transactional;
 public class PersonService {
     
     @PersistenceContext(name="PersonDS")
-    private EntityManager em;
+    EntityManager em;
     
     public Person getPerson(Long id){
         return em.find(Person.class,id);

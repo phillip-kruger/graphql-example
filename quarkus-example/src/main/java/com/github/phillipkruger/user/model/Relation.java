@@ -9,6 +9,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Relation implements Serializable {
+    private static final long serialVersionUID = 4234567L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
