@@ -303,6 +303,18 @@ public Integer getRandomNumber(@Min(10) long seed){
 
 #### Demo 11: Mutations
 
+```
+    @Mutation
+    public Person updatePerson(Person person){
+        return personService.updateOrCreate(person);
+    }
+    
+    @Mutation
+    public Person deletePerson(Long id){
+        return personService.delete(id);
+    }
+```
+
 ##### Create
 ```
 mutation CreatePerson{
