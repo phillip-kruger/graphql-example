@@ -4,9 +4,11 @@ import com.github.phillipkruger.user.model.Person;
 import com.github.phillipkruger.user.model.Score;
 import com.github.phillipkruger.user.service.PersonService;
 import com.github.phillipkruger.user.service.ScoreService;
+import graphql.schema.GraphQLSchema;
 import java.util.List;
 import java.util.Random;
 import javax.annotation.security.RolesAllowed;
+import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 import javax.validation.constraints.Min;
 import org.eclipse.microprofile.graphql.DefaultValue;
@@ -70,4 +72,9 @@ public class PersonGraphQLApi {
         return personService.getPeopleWithSurname(surname);
     }
     
+    public GraphQLSchema.Builder leakyAbstraction(@Observes GraphQLSchema.Builder builder) {
+        System.err.println(">>>>>>> Here we leak");
+        
+        return builder;
+    }
 }
