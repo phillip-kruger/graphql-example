@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    
+
     <parent>
         <groupId>com.github.phillip-kruger.graphql</groupId>
         <artifactId>graphql-example-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
-    
+
     <artifactId>quarkus-example</artifactId>
     <packaging>jar</packaging>
-    
+
     <name>GraphQL Demo :: Quarkus Example</name>
-    
+
     <properties>
         <compiler-plugin.version>3.8.1</compiler-plugin.version>
         <maven.compiler.parameters>true</maven.compiler.parameters>
@@ -23,7 +23,7 @@
         <quarkus.platform.version>${quarkus.version}</quarkus.platform.version>
         <surefire-plugin.version>2.22.1</surefire-plugin.version>
     </properties>
-    
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -35,14 +35,14 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    
+
     <dependencies>
         <!-- GraphQL: To add GraphQL -->
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-smallrye-graphql</artifactId>
         </dependency>
-        
+
         <!-- JAX-RS: To be able to compare to REST-->
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -60,7 +60,7 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-smallrye-openapi</artifactId>
         </dependency>
-        
+
         <!-- JPA: To show posible use of @Context -->
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -70,7 +70,7 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-jdbc-h2</artifactId>
         </dependency>
-        
+
         <!-- Tracing and Metrics: to show integration with tracing and metrics -->
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -80,7 +80,7 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-smallrye-opentracing</artifactId>
         </dependency>
-        
+
         <!-- Security: To show @RolesAllowed -->
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -90,13 +90,24 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-elytron-security-properties-file</artifactId>
         </dependency>
-        
+
         <!-- Bean validation: To show validation -->
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-hibernate-validator</artifactId>
         </dependency>
-        
+
+        <!-- error!: checking -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-undertow-websockets</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.10</version>
+        </dependency>
         <!-- Test -->
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -108,9 +119,9 @@
             <artifactId>rest-assured</artifactId>
             <scope>test</scope>
         </dependency>
-        
+
     </dependencies>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -161,7 +172,7 @@
             </plugin>
         </plugins>
     </build>
-    
+
     <profiles>
         <profile>
             <id>native</id>
@@ -191,11 +202,11 @@
                     </plugin>
                 </plugins>
             </build>
-            
+
             <properties>
                 <quarkus.package.type>native</quarkus.package.type>
             </properties>
         </profile>
     </profiles>
-    
+
 </project>

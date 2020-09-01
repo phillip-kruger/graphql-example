@@ -1,5 +1,6 @@
 package com.github.phillipkruger.user.model;
 
+import java.io.Serializable;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.LinkedList;
@@ -15,116 +16,116 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Person{
-    
+public class Person implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String locale;
-    
+
     private String title;
-    
+
     @ElementCollection(fetch = FetchType.EAGER, targetClass=String.class)
     private List<String> names;
-    
+
     @ElementCollection(targetClass=String.class)
     private List<String> nicknames;
-    
+
     private String surname;
-    
+
     private String username;
-    
+
     private String idNumber;
-    
+
     @ElementCollection(targetClass=URL.class)
     private List<URL> coverphotos;
-    
+
     @ElementCollection(targetClass=URL.class)
     private List<URL> profilePictures;
-    
+
     private Gender gender;
-    
+
     @JsonbDateFormat("dd/MM/yyyy")
     private LocalDate birthDate;
-    
+
     private String favColor;
-    
+
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Address> addresses;
-    
+
     @ElementCollection(fetch = FetchType.LAZY,targetClass=String.class)
     private List<String> emailAddresses;
-    
+
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Phone> phoneNumbers;
-    
+
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<ImClient> imClients;
-    
+
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<SocialMedia> socialMedias;
-    
+
     private URL website;
-    
+
     @ElementCollection(fetch = FetchType.LAZY,targetClass=String.class)
     private List<String> taglines;
-    
+
     private String biography;
-    
+
     private String organization;
-    
+
     private String occupation;
-    
+
     @ElementCollection(fetch = FetchType.LAZY,targetClass=String.class)
     private List<String> interests;
-    
+
     @ElementCollection(fetch = FetchType.LAZY,targetClass=String.class)
     private List<String> skills;
-    
+
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Relation> relations;
-    
+
     @JsonbDateFormat("dd/MM/yyyy")
     private LocalDate joinDate;
-    
+
     private String maritalStatus;
-    
+
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<CreditCard> creditCards;
-    
+
     private String userAgent;
-    
+
     public void addName(String name){
         if(names==null)names = new LinkedList<>();
         names.add(name);
     }
-    
+
     public void addNickName(String nickname){
         if(nicknames==null)nicknames = new LinkedList<>();
         nicknames.add(nickname);
     }
-    
+
     public void addCoverPhoto(URL coverphoto){
         if(coverphotos==null)coverphotos = new LinkedList<>();
         coverphotos.add(coverphoto);
     }
-    
+
     public void addProfilePicture(URL profilePicture){
         if(profilePictures==null)profilePictures = new LinkedList<>();
         profilePictures.add(profilePicture);
     }
-    
+
     public void addAddress(Address address){
         if(addresses==null)addresses = new LinkedList<>();
         addresses.add(address);
     }
-    
+
     public void addEmailAddress(String emailAddress){
         if(emailAddresses==null)emailAddresses = new LinkedList<>();
         emailAddresses.add(emailAddress);
     }
-            
+
     public void addPhoneNumber(Phone phoneNumber){
         if(phoneNumbers==null)phoneNumbers = new LinkedList<>();
         phoneNumbers.add(phoneNumber);
@@ -134,32 +135,32 @@ public class Person{
         if(imClients==null)imClients = new LinkedList<>();
         imClients.add(imClient);
     }
-    
+
     public void addSocialMedia(SocialMedia socialMedia){
         if(socialMedias==null)socialMedias = new LinkedList<>();
         socialMedias.add(socialMedia);
     }
-    
+
     public void addTagline(String tagline){
         if(taglines==null)taglines = new LinkedList<>();
         taglines.add(tagline);
     }
-    
+
     public void addInterest(String interest){
         if(interests==null)interests = new LinkedList<>();
         interests.add(interest);
     }
-    
+
     public void addSkill(String skill){
         if(skills==null)skills = new LinkedList<>();
         skills.add(skill);
     }
-    
+
     public void addRelationship(Relation relation){
         if(relations==null)relations = new LinkedList<>();
         relations.add(relation);
     }
-    
+
     public void addCreditCard(CreditCard card){
         if(creditCards==null)creditCards = new LinkedList<>();
         creditCards.add(card);
