@@ -9,19 +9,25 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.json.bind.Jsonb;
+import javax.json.bind.JsonbBuilder;
 import javax.transaction.Transactional;
-import javax.ws.rs.*;
+import javax.ws.rs.BeanParam;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.eclipse.microprofile.metrics.MetricUnits;
 import org.eclipse.microprofile.metrics.annotation.Timed;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
-@Slf4j
 @ApplicationScoped
 @Path("/person")
 @Consumes(MediaType.APPLICATION_JSON) @Produces(MediaType.APPLICATION_JSON)
@@ -31,12 +37,12 @@ public class PersonRestApi {
     @Inject
     PersonService personService;
 
-//    @GET
-//    @Path("/{id}")
-//    @Operation(description = "Get a person using the person's Id")
-//    public Person getPerson(@PathParam("id") Long id){
-//        return personService.getPerson(id);
-//    }
+    @GET
+    @Path("/{id}")
+    @Operation(description = "Get a person using the person's Id")
+    public Person getPerson(@PathParam("id") Long id){
+        return personService.getPerson(id);
+    }
 
     @GET
     @Operation(description = "Get all people")
@@ -48,49 +54,37 @@ public class PersonRestApi {
     @Transactional
     @Path("/post1")
     public Person post1(@BeanParam Person personContext) {
-        log.info("there is something");
-        System.out.println("123");
         Person person = personService.getPerson(personContext);
-        log.info("there is something: {}", person);
-        System.out.println("321");
         return person;
     }
 
-    // with Websocker will be timeout, without websocker will be nullPointerException.
+    // with Websocket will be timeout, without websocker will be nullPointerException.
     @POST
     @Transactional
     @Path("/post2")
     public Person post2(InputStream body) throws IOException {
-        log.info("there is something");
         String deserializedBody = streamToString(body);
-        Person requestOwner = personService.deserializeFromRequest(Person.class, deserializedBody);
-        log.info("there is something: {}", deserializedBody);
-        System.out.println("111");
+        Person requestOwner = JSONB.fromJson(deserializedBody, Person.class);
         return requestOwner;
     }
 
-    // with Websocker will be timeout, without websocker will be nullPointerException.
+    // with Websocket will be timeout, without websocker will be nullPointerException.
     @POST
     @Transactional
     @Path("/post3")
-    public Response post3(InputStream body) throws IOException {
-        log.info("there is something");
+    public Response post3(InputStream body) {
         String deserializedBody = streamToString(body);
-        Person requestOwner = personService.deserializeFromRequest(Person.class, deserializedBody);
-        log.info("there is something: {}", deserializedBody);
-        System.out.println("111");
+        Person requestOwner = JSONB.fromJson(deserializedBody, Person.class);
         return Response.ok(requestOwner).build();
     }
 
-    public static String streamToString(InputStream inputStream) throws IOException {
-        log.info("there is something 1");
+    private String streamToString(InputStream inputStream) {
         try {
-            log.info("there is something 2");
             return IOUtils.toString(inputStream, StandardCharsets.UTF_8.name());
         } catch (IOException ioe) {
-            log.info("there is something 0");
-            throw new IOException(ioe);
+            throw new RuntimeException(ioe);
         }
     }
-
+    
+    private static final Jsonb JSONB = JsonbBuilder.create();
 }
