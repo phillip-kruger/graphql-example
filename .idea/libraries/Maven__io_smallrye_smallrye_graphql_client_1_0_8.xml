@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: io.smallrye:smallrye-graphql-client:1.0.8">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/io/smallrye/smallrye-graphql-client/1.0.8/smallrye-graphql-client-1.0.8.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/io/smallrye/smallrye-graphql-client/1.0.8/smallrye-graphql-client-1.0.8-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/io/smallrye/smallrye-graphql-client/1.0.8/smallrye-graphql-client-1.0.8-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: io.vertx:vertx-auth-common:3.9.2">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/io/vertx/vertx-auth-common/3.9.2/vertx-auth-common-3.9.2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/io/vertx/vertx-auth-common/3.9.2/vertx-auth-common-3.9.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/io/vertx/vertx-auth-common/3.9.2/vertx-auth-common-3.9.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
