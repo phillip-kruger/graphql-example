@@ -16,9 +16,6 @@ import org.eclipse.microprofile.graphql.GraphQLApi;
 import org.eclipse.microprofile.graphql.Mutation;
 import org.eclipse.microprofile.graphql.Query;
 import org.eclipse.microprofile.graphql.Source;
-import org.eclipse.microprofile.metrics.MetricUnits;
-import org.eclipse.microprofile.metrics.annotation.Counted;
-import org.eclipse.microprofile.metrics.annotation.Timed;
 
 @GraphQLApi
 public class PersonGraphQLApi {
@@ -30,8 +27,8 @@ public class PersonGraphQLApi {
     PersonService personService;
     
     @Query
-    @Timed(name = "personTimer", description = "How long does it take to get a Person.", unit = MetricUnits.NANOSECONDS)
-    @Counted(name = "personCount", description = "How many times did we ask for Person.")
+    //@Timed(name = "personTimer", description = "How long does it take to get a Person.", unit = MetricUnits.NANOSECONDS)
+    //@Counted(name = "personCount", description = "How many times did we ask for Person.")
     public Person getPerson(Long id){
         return personService.getPerson(id);
     }
