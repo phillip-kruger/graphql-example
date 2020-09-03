@@ -116,7 +116,25 @@ in the log file:
 ======= Getting person [1] =======
 ```
 
-#### Demo 3: More than one request
+#### Demo 3: Batch
+
+```
+{
+  people{
+    names
+    scores{
+      name
+    }
+  }
+}
+```
+in the log file:
+
+```
+======= Getting scores [797-95-4822, 373-95-3047, 097-87-6795, 347-01-8880, 733-86-4423, 560-99-2165, 091-07-5401, 539-70-2014, 029-18-5986, 287-58-0690] =======
+```
+
+#### Demo 4: More than one request
 
 ```
 {
@@ -157,7 +175,7 @@ public Integer getRandomNumber(long seed){
 ```
 
 
-#### Demo 4: Collections
+#### Demo 5: Collections
 
 ```
 {
@@ -167,7 +185,7 @@ public Integer getRandomNumber(long seed){
 }
 ```
 
-#### Demo 5: JsonB Annotations support
+#### Demo 6: JsonB Annotations support
 
 ```
 {
@@ -178,7 +196,7 @@ public Integer getRandomNumber(long seed){
 }
 ```
 
-#### Demo 6: DefaultValue
+#### Demo 7: DefaultValue
 
 ```
 @Query
@@ -208,7 +226,7 @@ Uing the default
 }
 ```
 
-#### Demo 7: Errors and partial responses
+#### Demo 8: Errors and partial responses
 
 ##### Validation Errors
 
@@ -237,7 +255,7 @@ Uing the default
 }
 ```
 
-#### Demo 8: Metrics and Tracing
+#### Demo 9: Metrics and Tracing
 
 ##### Servers
 
@@ -279,13 +297,13 @@ docker run -p 5775:5775/udp -p 6831:6831/udp -p 6832:6832/udp -p 5778:5778 -p 16
 ![tracing1](tracing1.png)
 ![tracing2](tracing2.png)
 
-#### Demo 9: Security
+#### Demo 10: Security
 
 ```
 @RolesAllowed("admin")
 ```
 
-#### Demo 10: Bean validation
+#### Demo 11: Bean validation
 
 ```
 @Query
@@ -301,7 +319,7 @@ public Integer getRandomNumber(@Min(10) long seed){
 }
 ```
 
-#### Demo 11: Mutations
+#### Demo 12: Mutations
 
 ```
     @Mutation
@@ -370,7 +388,7 @@ mutation DeletePerson{
 }
 ```
 
-#### Demo 12: Context (Experimental)
+#### Demo 13: Context (Experimental)
 
 ```
 quarkus.hibernate-orm.log.sql=true
@@ -395,7 +413,7 @@ System.out.println("selectedFields [" + selectedFields +"]");
 }
 ```
 
-#### Demo 13: Client (Future)
+#### Demo 14: Client (Future)
 
 See the model in the JavaDoc (target/apidocs/index.html)
 

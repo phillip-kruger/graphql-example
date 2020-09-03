@@ -25,6 +25,15 @@ public class ScoreService {
         return scoreDatabase.get(idNumber);
     }
     
+    public List<List<Score>> getScores(List<String> idNumbers){
+        System.err.println("======= Getting scores " + idNumbers + " =======");
+        List<List<Score>> allscores = new ArrayList<>();
+        for(String idNumber:idNumbers){
+            allscores.add(scoreDatabase.get(idNumber));
+        }
+        return allscores;
+    }
+    
     @PostConstruct
     void init(){
         try(InputStream jsonStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("score.json")){

@@ -5,8 +5,10 @@ import com.github.phillipkruger.user.model.Score;
 import com.github.phillipkruger.user.service.PersonService;
 import com.github.phillipkruger.user.service.ScoreService;
 import graphql.schema.GraphQLSchema;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 import javax.annotation.security.RolesAllowed;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
@@ -39,8 +41,15 @@ public class PersonGraphQLApi {
     }
     
     //@RolesAllowed("admin")
-    public List<Score> getScores(@Source Person p) throws ScoresNotAvailableException{
-        return scoreService.getScores(p.getIdNumber());
+    public List<Score> getScores(@Source Person person) throws ScoresNotAvailableException{
+        return scoreService.getScores(person.getIdNumber());
+        //throw new ScoresNotAvailableException("Scores for person [" + person.getId() + "] not avaialble");
+    }
+    
+    // Batch 
+    public List<List<Score>> getScores(@Source List<Person> people) throws ScoresNotAvailableException{
+        List<String> idNumbers = people.stream().map(p -> p.getIdNumber()).collect(Collectors.toList());
+        return scoreService.getScores(idNumbers);
         //throw new ScoresNotAvailableException("Scores for person [" + p.getId() + "] not avaialble");
     }
     
