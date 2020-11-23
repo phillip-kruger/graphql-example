@@ -4,6 +4,7 @@ import com.github.phillipkruger.user.model.Person;
 import com.github.phillipkruger.user.model.Score;
 import com.github.phillipkruger.user.service.PersonService;
 import com.github.phillipkruger.user.service.ScoreService;
+import graphql.GraphQL;
 import graphql.schema.GraphQLSchema;
 import java.util.List;
 import java.util.Random;
@@ -77,8 +78,14 @@ public class PersonGraphQLApi {
     }
     
     public GraphQLSchema.Builder leakyAbstraction(@Observes GraphQLSchema.Builder builder) {
-        System.err.println(">>>>>>> Here we leak");
-        
+        System.err.println(">>>>>>> Here we leak while building the schema");
+        // Do what you have to do
+        return builder;
+    }
+    
+    public GraphQL.Builder leakyAbstraction(@Observes GraphQL.Builder builder) {
+        System.err.println(">>>>>>> Here we leak while building graphQL");
+        // Do what you have to do
         return builder;
     }
 }
