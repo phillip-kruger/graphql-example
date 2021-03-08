@@ -6,6 +6,7 @@ import com.github.phillipkruger.user.service.PersonService;
 import com.github.phillipkruger.user.service.ScoreService;
 import graphql.GraphQL;
 import graphql.schema.GraphQLSchema;
+import io.vertx.ext.web.RoutingContext;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -27,6 +28,9 @@ public class PersonGraphQLApi {
     @Inject
     PersonService personService;
     
+    @Inject
+    RoutingContext routingContext; 
+    
     @Query
     //@Timed(name = "personTimer", description = "How long does it take to get a Person.", unit = MetricUnits.NANOSECONDS)
     //@Counted(name = "personCount", description = "How many times did we ask for Person.")
@@ -36,6 +40,9 @@ public class PersonGraphQLApi {
 
     @Query
     public List<Person> getPeople(){
+        String header = routingContext.request().getHeader("bla");
+        System.err.println(">>>>>>>>>>>> bla " + header);
+        
         return personService.getPeople();
     }
     
