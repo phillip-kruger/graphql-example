@@ -2,7 +2,6 @@ package com.github.phillipkruger.user.client;
 
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
-import io.smallrye.graphql.client.typesafe.api.GraphQlClientBuilder;
 import javax.inject.Inject;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
@@ -13,8 +12,8 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 @QuarkusMain
 public class PersonMain implements QuarkusApplication {
 
-    //@Inject
-    PersonGraphQLClient graphQLClient = GraphQlClientBuilder.newBuilder().build(PersonGraphQLClient.class);
+    @Inject
+    PersonGraphQLClient graphQLClient;
     
     @Inject @RestClient
     PersonRestClient restClient;

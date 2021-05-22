@@ -1,9 +1,9 @@
 package com.github.phillipkruger.user.client;
 
-import io.smallrye.graphql.client.typesafe.api.GraphQlClientApi;
+import io.smallrye.graphql.client.typesafe.api.GraphQLClientApi;
 import org.eclipse.microprofile.graphql.Query;
 
-@GraphQlClientApi
+@GraphQLClientApi
 public interface PersonGraphQLClient {
     
     @Query
