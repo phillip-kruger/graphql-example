@@ -1,6 +1,7 @@
 package com.github.phillipkruger.user.service;
 
 import com.github.phillipkruger.user.model.Person;
+import java.util.BitSet;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
@@ -15,7 +16,17 @@ public class PersonService {
 
     public Person getPerson(Long id){
         System.out.println("======= Getting person [" + id +"] =======");
-        return em.find(Person.class,id);
+        
+        Person p = em.find(Person.class,id);
+        
+        BitSet bs = new BitSet(1024);
+        bs.set(40);
+        bs.set(78);
+        bs.set(53);
+        bs.set(12);
+        p.setTimeline(bs);
+        
+        return p;
     }
 
     public Person getPerson(Person person) {
