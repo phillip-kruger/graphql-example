@@ -1,5 +1,6 @@
 package com.github.phillipkruger.user.client;
 
+import java.math.BigInteger;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -13,5 +14,5 @@ public interface PersonRestClient {
     @GET
     @Path("/person/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Person getPerson(@PathParam("id") int id);
+    public Person getPerson(@PathParam("id") BigInteger id);
 }

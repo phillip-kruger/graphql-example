@@ -1,19 +1,20 @@
 package com.github.phillipkruger.user.client;
 
+import java.math.BigInteger;
 import java.util.List;
 
 public class Person {
-    private Integer id;
+    private BigInteger id;
     private String title;
     private List<String> names;
     private String surname;
     private List<Score> scores;
     
-    public Integer getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 
