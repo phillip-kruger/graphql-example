@@ -6,13 +6,10 @@ import com.github.phillipkruger.user.service.PersonService;
 import com.github.phillipkruger.user.service.ScoreService;
 import graphql.GraphQL;
 import graphql.schema.GraphQLSchema;
-import io.vertx.ext.web.RoutingContext;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
-import javax.validation.constraints.Min;
 import org.eclipse.microprofile.graphql.DefaultValue;
 import org.eclipse.microprofile.graphql.GraphQLApi;
 import org.eclipse.microprofile.graphql.Mutation;
@@ -28,9 +25,6 @@ public class PersonGraphQLApi {
     @Inject
     PersonService personService;
     
-    @Inject
-    RoutingContext routingContext; 
-    
     @Query
     //@Timed(name = "personTimer", description = "How long does it take to get a Person.", unit = MetricUnits.NANOSECONDS)
     //@Counted(name = "personCount", description = "How many times did we ask for Person.")
@@ -40,9 +34,6 @@ public class PersonGraphQLApi {
 
     @Query
     public List<Person> getPeople(){
-        String header = routingContext.request().getHeader("bla");
-        System.err.println(">>>>>>>>>>>> bla " + header);
-        
         return personService.getPeople();
     }
     
@@ -52,21 +43,14 @@ public class PersonGraphQLApi {
         //throw new ScoresNotAvailableException("Scores for person [" + person.getId() + "] not avaialble");
     }
     
-    // Batch 
+    // Batch version of above (only this takes effect when both is present)
     public List<List<Score>> getScores(@Source List<Person> people) throws ScoresNotAvailableException{
         List<String> idNumbers = people.stream().map(p -> p.getIdNumber()).collect(Collectors.toList());
         return scoreService.getScores(idNumbers);
         //throw new ScoresNotAvailableException("Scores for person [" + p.getId() + "] not avaialble");
     }
     
-    @Query
-    public Integer getRandomNumber(@Min(10) long seed){
-        Random random = new Random(seed);
-        return random.nextInt();
-    }
-    
-    // Mutations
-    
+    // Mutations    
     @Mutation
     public Person updatePerson(Person person){
         return personService.updateOrCreate(person);

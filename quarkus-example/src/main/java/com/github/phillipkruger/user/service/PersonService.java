@@ -16,24 +16,12 @@ public class PersonService {
 
     public Person getPerson(Long id){
         System.out.println("======= Getting person [" + id +"] =======");
-        
-        Person p = em.find(Person.class,id);
-        
-        BitSet bs = new BitSet(1024);
-        bs.set(40);
-        bs.set(78);
-        bs.set(53);
-        bs.set(12);
-        p.setTimeline(bs);
-        
-        return p;
+        return em.find(Person.class,id);
     }
 
     public Person getPerson(Person person) {
         System.out.println("======= Getting person [" + person +"] =======");
-        Person thisPerson = em.find(Person.class, person);
-        System.out.println("Error");
-        return thisPerson;
+        return em.find(Person.class, person);
     }
 
     public List<Person> getPeople(){

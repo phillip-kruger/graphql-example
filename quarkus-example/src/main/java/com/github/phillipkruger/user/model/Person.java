@@ -1,15 +1,11 @@
 package com.github.phillipkruger.user.model;
 
-import io.smallrye.graphql.api.Scalar;
-import io.smallrye.graphql.api.ToScalar;
 import java.io.Serializable;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.BitSet;
 import java.util.LinkedList;
 import java.util.List;
 import javax.json.bind.annotation.JsonbDateFormat;
-import javax.json.bind.annotation.JsonbTypeAdapter;
 import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -30,7 +26,7 @@ public class Person implements Serializable {
 
     private String title;
 
-    @ElementCollection(fetch = FetchType.EAGER, targetClass=String.class)
+    @ElementCollection(fetch = FetchType.LAZY, targetClass=String.class)
     private List<String> names;
 
     @ElementCollection(targetClass=String.class)
@@ -98,10 +94,6 @@ public class Person implements Serializable {
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<CreditCard> creditCards;
 
-    @ToScalar(Scalar.String.class)
-    @JsonbTypeAdapter(MyBitSetAdaptor.class)
-    private BitSet timeline;
-    
     private String userAgent;
 
     public void addName(String name){
@@ -413,14 +405,4 @@ public class Person implements Serializable {
     public void setUserAgent(String userAgent) {
         this.userAgent = userAgent;
     }
-
-    public BitSet getTimeline() {
-        return timeline;
-    }
-
-    public void setTimeline(BitSet timeline) {
-        this.timeline = timeline;
-    }
-    
-    
 }
