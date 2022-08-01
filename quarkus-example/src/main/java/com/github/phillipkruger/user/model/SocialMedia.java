@@ -10,7 +10,7 @@ import javax.persistence.Id;
 public class SocialMedia {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonbTransient
     private Integer id;
     

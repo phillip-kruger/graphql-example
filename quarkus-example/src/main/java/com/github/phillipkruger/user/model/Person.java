@@ -19,7 +19,7 @@ import javax.persistence.OneToMany;
 public class Person implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     private String locale;

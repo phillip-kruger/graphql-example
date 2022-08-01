@@ -1,0 +1,152 @@
+
+== Rest ==
+
+- Show all (overfetch)
+- Show single (underfetch)
+
+== GraphQL ==
+
+- Modify Query (person)
+- Show schema
+- Show that there is no score
+- Add Source (score)
+
+------- BACK TO SLIDES HERE (show compare to REST)
+
+== Batch ==
+
+List<String> ids = people.stream().map(Person::getIdNumber).collect(Collectors.toList());
+
+== Multiple requests ==
+
+@Inject
+ExchangeRateService exchangeRateService;
+
+    public ExchangeRate getExchangeRate(@Source Person person, CurencyCode against){
+        return exchangeRateService.getExchangeRate(against,person.getCurencyCode());    
+    }
+
+
+    
+ADD WEATHER FROM FILE
+
+{
+  person(id:1){
+    names
+    surname
+    exchangeRate(against:GBP){
+      rate
+    }
+  }
+  weather(city:"London"){
+    description
+    min
+    max
+  }
+}
+
+== Async == 
+
+CompletableFuture.supplyAsync(() -> personService.getPerson(id));
+
+{
+  person(id:1){
+    names
+    surname
+    gbp:exchangeRate(against:GBP){
+      rate
+    }
+    usd:exchangeRate(against:USD){
+      rate
+    }
+  }
+  uk:weather(city:"London"){
+    description
+    min
+    max
+  }
+  us:weather(city:"New York"){
+    description
+    min
+    max
+  }
+}
+
+== Errors and partial response ==
+
+
+------- BACK TO SLIDES HERE
+
+== Transformation and mapping ==
+
+On birthdate: @DateFormat("dd/MM/yyyy")
+On id: @ToScalar(Scalar.Int.class)
+On email @ToScalar(Scalar.String.class)
+
+== Mutation ==
+
+    @Mutation
+    public Person updatePerson(Person person){
+        return personService.updateOrCreate(person);
+    }
+
+    @Mutation
+    public Person deletePerson(Long id){
+        return personService.delete(id);
+    }
+    
+mutation CreatePerson{
+  updatePerson(person :
+    {
+      names: "Phillip"
+    }
+  ){
+    id
+    names
+    surname
+    profilePictures
+    website
+  }
+}
+
+mutation UpdatePerson{
+  updatePerson(person :
+    {
+      id: 11,
+      names:"Phillip",
+      surname: "Kruger",
+      profilePictures: [
+        "https://pbs.twimg.com/profile_images/1311017429242437636/CbUoiAeP_400x400.jpg"
+      ],
+      website: "http://www.phillip-kruger.com"
+    }){
+    id
+    names
+    surname
+    profilePictures
+    website
+  }
+}
+
+== Subscription ==
+
+@Subscription
+public Multi<Person> personAdded(){
+    return personService.personListener();
+}
+
+subscription PersonAdded {
+  personAdded {
+    names
+  }
+}
+
+== Security ==
+
+@RolesAllowed("user")
+
+{
+  "authorization": "Bearer "
+}
+
+== Client ==

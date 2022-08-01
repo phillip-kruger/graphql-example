@@ -1,6 +1,5 @@
 package com.github.phillipkruger.user.model;
 
-import java.io.Serializable;
 import java.util.List;
 import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.ElementCollection;
@@ -15,7 +14,7 @@ import javax.persistence.OrderColumn;
 public class Address {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonbTransient
     private Integer id;
     

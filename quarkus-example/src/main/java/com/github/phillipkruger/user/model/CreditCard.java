@@ -1,6 +1,5 @@
 package com.github.phillipkruger.user.model;
 
-import java.io.Serializable;
 import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +10,7 @@ import javax.persistence.Id;
 public class CreditCard {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonbTransient
     private Integer id;
     

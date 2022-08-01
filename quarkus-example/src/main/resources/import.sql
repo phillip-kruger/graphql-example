@@ -1,5 +1,4 @@
 -- Load some test data
-
 insert into PERSON (id, locale, title, surname, username, idnumber, gender, birthdate, favColor, website, biography, organization, occupation, joinDate, maritalStatus,userAgent) values (1, 'en-ZA', 'Mrs.', 'O''Reilly', 'armando.wisoky', '797-95-4822', 1, '1977-11-08', 'mint green', 'http://www.korey-gleichner.org', 'Aut eaque et velit exercitationem. Voluptatum nihil sint quo sed eos saepe. Aut officia enim unde. Et quae fugiat quas vel est. Quo eos ipsum sed inventore et. Sunt dolor quia nulla debitis porro rerum vel. Voluptates qui ab.','Rice Sons', 'Architect', '2011-03-04', 'Separated', 'Opera');
 insert into PERSON_NAMES (PERSON_ID, NAMES) values (1, 'Christine');
 insert into PERSON_NAMES (PERSON_ID, NAMES) values (1, 'Fabian');
@@ -429,3 +428,6 @@ insert into SOCIALMEDIA (ID, NAME, USERNAME) values (19, 'Twitter','@jenifer.orn
 insert into PERSON_SOCIALMEDIA (PERSON_ID, SOCIALMEDIAS_ID) values (10, 19);
 insert into SOCIALMEDIA (ID, NAME, USERNAME) values (20, 'Facebook','kraig.kreiger');
 insert into PERSON_SOCIALMEDIA (PERSON_ID, SOCIALMEDIAS_ID) values (10, 20);
+
+drop sequence if exists hibernate_sequence;
+create sequence hibernate_sequence start 11 increment 1;

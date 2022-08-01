@@ -41,7 +41,13 @@ public class PersonService {
             em.persist(person);
             return person;
         }else{
-            return em.merge(person);
+            Person existing = em.find(Person.class, person.getId());
+            if(existing!=null){
+                return em.merge(person);
+            }else {
+                em.persist(person);
+                return person;
+            }
         }
     }
 

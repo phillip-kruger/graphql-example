@@ -6,11 +6,12 @@ import com.github.phillipkruger.user.service.PersonService;
 import com.github.phillipkruger.user.service.ScoreService;
 import graphql.GraphQL;
 import graphql.schema.GraphQLSchema;
+
 import java.util.List;
-import java.util.stream.Collectors;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 import org.eclipse.microprofile.graphql.DefaultValue;
+import org.eclipse.microprofile.graphql.Description;
 import org.eclipse.microprofile.graphql.GraphQLApi;
 import org.eclipse.microprofile.graphql.Mutation;
 import org.eclipse.microprofile.graphql.Query;
@@ -18,16 +19,15 @@ import org.eclipse.microprofile.graphql.Source;
 
 @GraphQLApi
 public class PersonGraphQLApi {
-    
+
+    @Inject
+    PersonService personService;
+
     @Inject 
     ScoreService scoreService;
     
-    @Inject
-    PersonService personService;
-    
     @Query
-    //@Timed(name = "personTimer", description = "How long does it take to get a Person.", unit = MetricUnits.NANOSECONDS)
-    //@Counted(name = "personCount", description = "How many times did we ask for Person.")
+    @Description("Get a person using the person's Id")
     public Person getPerson(Long id){
         return personService.getPerson(id);
     }
@@ -44,11 +44,11 @@ public class PersonGraphQLApi {
     }
     
     // Batch version of above (only this takes effect when both is present)
-    public List<List<Score>> getScores(@Source List<Person> people) throws ScoresNotAvailableException{
-        List<String> idNumbers = people.stream().map(p -> p.getIdNumber()).collect(Collectors.toList());
-        return scoreService.getScores(idNumbers);
-        //throw new ScoresNotAvailableException("Scores for person [" + p.getId() + "] not avaialble");
-    }
+//    public List<List<Score>> getScores(@Source List<Person> people) throws ScoresNotAvailableException{
+//        List<String> idNumbers = people.stream().map(p -> p.getIdNumber()).collect(Collectors.toList());
+//        return scoreService.getScores(idNumbers);
+//        //throw new ScoresNotAvailableException("Scores not avaialble");
+//    }
     
     // Mutations    
     @Mutation

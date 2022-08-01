@@ -58,7 +58,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         
         <smallrye-graphql.version>1.6.0</smallrye-graphql.version>
-        <quarkus.version>2.10.4.Final</quarkus.version>
+        <quarkus.version>2.11.1.Final</quarkus.version>
     </properties>
     
     <dependencyManagement>
