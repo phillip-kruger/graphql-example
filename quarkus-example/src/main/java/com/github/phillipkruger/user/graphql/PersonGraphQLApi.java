@@ -6,6 +6,8 @@ import com.github.phillipkruger.user.service.PersonService;
 import com.github.phillipkruger.user.service.ScoreService;
 import graphql.GraphQL;
 import graphql.schema.GraphQLSchema;
+import io.smallrye.graphql.api.Subscription;
+import io.smallrye.mutiny.Multi;
 
 import java.util.List;
 import javax.enterprise.event.Observes;
@@ -66,6 +68,11 @@ public class PersonGraphQLApi {
     public List<Person> getPersonsWithSurname(
             @DefaultValue("Doyle") String surname) {
         return personService.getPeopleWithSurname(surname);
+    }
+    
+    @Subscription
+    public Multi<Person> personAdded(){
+        return personService.personListener();
     }
     
     public GraphQLSchema.Builder leakyAbstraction(@Observes GraphQLSchema.Builder builder) {

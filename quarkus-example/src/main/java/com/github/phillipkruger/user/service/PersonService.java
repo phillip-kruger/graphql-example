@@ -1,7 +1,8 @@
 package com.github.phillipkruger.user.service;
 
 import com.github.phillipkruger.user.model.Person;
-import java.util.BitSet;
+import io.smallrye.mutiny.Multi;
+import io.smallrye.mutiny.operators.multi.processors.BroadcastProcessor;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
@@ -11,6 +12,8 @@ import javax.transaction.Transactional;
 @ApplicationScoped
 public class PersonService {
 
+    BroadcastProcessor<Person> processor = BroadcastProcessor.create();
+    
     @PersistenceContext(name="PersonDS")
     EntityManager em;
 
@@ -39,13 +42,16 @@ public class PersonService {
     public Person updateOrCreate(Person person) {
         if(person.getId()==null){
             em.persist(person);
+            processor.onNext(person);
             return person;
         }else{
             Person existing = em.find(Person.class, person.getId());
             if(existing!=null){
+                processor.onNext(person);
                 return em.merge(person);
             }else {
-                em.persist(person);
+                em.persist(person);        
+                processor.onNext(person);
                 return person;
             }
         }
@@ -61,4 +67,7 @@ public class PersonService {
         return p;
     }
 
+    public Multi<Person> personListener(){
+        return processor;
+    }
 }

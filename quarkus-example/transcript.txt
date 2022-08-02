@@ -19,58 +19,7 @@ List<String> ids = people.stream().map(Person::getIdNumber).collect(Collectors.t
 
 == Multiple requests ==
 
-@Inject
-ExchangeRateService exchangeRateService;
 
-    public ExchangeRate getExchangeRate(@Source Person person, CurencyCode against){
-        return exchangeRateService.getExchangeRate(against,person.getCurencyCode());    
-    }
-
-
-    
-ADD WEATHER FROM FILE
-
-{
-  person(id:1){
-    names
-    surname
-    exchangeRate(against:GBP){
-      rate
-    }
-  }
-  weather(city:"London"){
-    description
-    min
-    max
-  }
-}
-
-== Async == 
-
-CompletableFuture.supplyAsync(() -> personService.getPerson(id));
-
-{
-  person(id:1){
-    names
-    surname
-    gbp:exchangeRate(against:GBP){
-      rate
-    }
-    usd:exchangeRate(against:USD){
-      rate
-    }
-  }
-  uk:weather(city:"London"){
-    description
-    min
-    max
-  }
-  us:weather(city:"New York"){
-    description
-    min
-    max
-  }
-}
 
 == Errors and partial response ==
 
