@@ -1,5 +1,5 @@
-[!WARNING]
-Rather use https://github.com/phillip-kruger/quarkus-graphql-examples as this is not being maintained and kept us to date.
+> [!WARNING]
+> Rather use https://github.com/phillip-kruger/quarkus-graphql-examples as this is not being maintained and kept us to date.
 
 
 # MicroProfile GraphQL Example
