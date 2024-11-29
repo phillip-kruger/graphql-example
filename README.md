@@ -1,3 +1,7 @@
+[!WARNING]
+Rather use https://github.com/phillip-kruger/quarkus-graphql-examples as this is not being maintained and kept us to date.
+
+
 # MicroProfile GraphQL Example
 
 This is an example of the [MicroProfile GraphQL API](https://github.com/eclipse/microprofile-graphql/) 
